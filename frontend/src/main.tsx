@@ -1,13 +1,13 @@
-import { StrictMode} from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import Layout from './components/Layout';
+import Content1 from './pages/Content1';
 
 
 
 function App() {
   return (
-    <div>
-      <h1>Hello, React!</h1>
-    </div>
+    <Layout children={<Content1 />} />
   );
 }
 
