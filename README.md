@@ -12,6 +12,7 @@ La saisie directe par les citoyens est hors périmètre de la version 1.
 - [`frontend/`](./frontend/) : interface React + TypeScript + Vite.
 - [`sql/`](./sql/) : schéma PostgreSQL/PostGIS et données initiales par module.
 - [`todo.md`](./todo.md) : suivi détaillé, une ligne correspondant à une petite tâche.
+- [`tools/todo-sync/`](./tools/todo-sync/) : synchronisation de la feuille Excel `liste des taches` vers `todo.md`.
 - [`docs/manuel-utilisateur.md`](./docs/manuel-utilisateur.md) : guide utilisateur.
 - [`maquettes/`](./maquettes/) : maquettes fonctionnelles.
 
@@ -76,3 +77,18 @@ variables d'environnement et ne doivent jamais être commités.
 
 Les attributs Java suivent le camelCase (`idRole`) et leurs noms SQL sont
 déclarés explicitement dans le mapping JPA (`id_role`).
+
+## Synchroniser le suivi Excel
+
+Depuis [`tools/todo-sync/`](./tools/todo-sync/) :
+
+```powershell
+composer install
+php bin/sync.php
+```
+
+Pour surveiller automatiquement les modifications du classeur :
+
+```powershell
+php bin/watch.php
+```

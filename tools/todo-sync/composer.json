@@ -1,0 +1,14 @@
+{
+  "name": "gouvernance-communale/todo-sync",
+  "description": "Synchronise la feuille liste des taches vers todo.md",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "phpoffice/phpspreadsheet": "^3.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "TodoSync\\": "src/"
+    }
+  }
+}

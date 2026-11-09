@@ -30,6 +30,7 @@ backend/storage/
 ~$*.xlsx
 *.sqlite
 *.db
+tools/todo-sync/vendor/
 
 # IDE and OS
 .idea/
