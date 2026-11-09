@@ -7,11 +7,16 @@ import Error from './pages/Error'
 export default function App() {
   return (
     <Routes>
+
       <Route element={<Layout />}>
+        {/* index pour indiquer une route par défaut */}
         <Route index element={<Content1 />} />
         <Route path="content-2" element={<Content2 />} />
       </Route>
+
+      {/* "*" pour indiquer une route inconnue */}
       <Route path="*" element={<Error />} />
+
     </Routes>
   )
 }

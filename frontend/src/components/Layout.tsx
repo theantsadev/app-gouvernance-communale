@@ -9,6 +9,7 @@ const Layout = () => {
         <div>
             <Header />
             <Sidebar />
+            {/* Outlet : variable désignée pour le contenu remplacable */}
             <Outlet />
             <Footer />
         </div>
