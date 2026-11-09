@@ -1,17 +1,20 @@
+import { Outlet } from "react-router";
 import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import type { ReactNode } from "react";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+
+const Layout = () => {
     return (
         <div>
             <Header />
             <Sidebar />
-            {children}
+            <Outlet />
             <Footer />
         </div>
     );
 }
 
 export default Layout;
+
+
