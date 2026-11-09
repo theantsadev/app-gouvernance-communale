@@ -1,8 +1,7 @@
 const  Content1 = () => {
     return (
         <main>
-            <h1>Bienvenue sur notre application</h1>
-            <p>Ceci est le contenu principal de notre application.</p>
+            <p>Contenu 1</p>
         </main>
     );
 }
