@@ -1,10 +1,12 @@
+import { Link } from "react-router";
+
 const Sidebar = () => {
     return (
         <aside>
             <h2>Menu</h2>
             <ul>
-                <li><a href="/">Voir le contenu 1</a></li>
-                <li><a href="/content-2">Voir le contenu 2</a></li>
+                <li><Link to="/">Voir le contenu 1</Link></li>
+                <li><Link to="/content-2">Voir le contenu 2</Link></li>
             </ul>
         </aside>
     );
