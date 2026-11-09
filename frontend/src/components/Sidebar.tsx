@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import '../assets/css/sidebar-style.css';
 
-
+// NavLink : composant pour créer un lien de navigation et ajoute automatiquement la classe "active" lorsque le lien correspond à l'URL actuelle
 const Sidebar = () => {
     return (
         <aside>
