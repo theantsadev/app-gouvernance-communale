@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* logo à gauche, utilisateur à droite */
+    padding: 0.5rem 1rem;
+}
+
+.header-logo {
+    height: 2.5rem;
+    width: auto;
+}
+
+.header-utilisateur {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.header-bulle {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    background: #1d4ed8;
+    color: #fff;
+}
+
+.header-nom {
+    display: none; /* masqué sur smartphone : la bulle suffit */
+}
+
+@media (min-width: 768px) {
+    .header-nom {
+        display: inline;
+    }
+}

@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar";
 const Layout = () => {
     return (
         <div>
-            <Header />
+            <Header utilisateur={{ prenom: "Jean", nom: "Dupont" }} deconnecter={() => {}} />
             <Sidebar />
             {/* Outlet : variable désignée pour le contenu remplacable */}
             <Outlet />
