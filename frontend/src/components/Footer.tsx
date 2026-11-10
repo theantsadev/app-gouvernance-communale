@@ -1,6 +1,8 @@
+import "../assets/css/footer-style.css";
+
 const Footer = () => {
     return (
-        <footer>
+        <footer className="footer">
             <p>&copy; 2026 Notre application. Tous droits réservés.</p>
         </footer>
     );
