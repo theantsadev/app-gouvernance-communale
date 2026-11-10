@@ -1,32 +1,30 @@
 import logoCommune from "../assets/img/hero.png";
 import '../assets/css/header-style.css';
+import Bulle from "./Bulle";
+import Hamburger from "./Hamburger";
+import type { UtilisateurAffiche } from "../types/UtilisateurAffiche";
 
 type HeaderProps = {
-    utilisateur: { prenom: string; nom: string };
+    utilisateur: UtilisateurAffiche;
     deconnecter: () => void;
+    menuOuvert: boolean;
+    basculerMenu: () => void;
 };
 
-const obtenirInitiales = (prenom: string, nom: string) =>
-    `${prenom.charAt(0)}${nom.charAt(0)}`.toUpperCase();
 
-const Header = ({ utilisateur, deconnecter }: HeaderProps) => {
-    const nomComplet = `${utilisateur.prenom} ${utilisateur.nom}`;
-
-    return (
-        <header className="header">
+const Header = ({ utilisateur, deconnecter, menuOuvert, basculerMenu }: HeaderProps) => (
+    <header className="header">
+        <div className="header-gauche">
+            <Hamburger ouvert={menuOuvert} basculer={basculerMenu} />
             <img className="header-logo" src={logoCommune} alt="Logo de la commune" />
-
-            <div className="header-utilisateur">
-                <div className="header-bulle" title={nomComplet}>
-                    {obtenirInitiales(utilisateur.prenom, utilisateur.nom)}
-                </div>
-                <span className="header-nom">{nomComplet}</span>
-                <button type="button" className="header-deconnexion" onClick={deconnecter}>
-                    Se déconnecter
-                </button>
-            </div>
-        </header>
-    );
-}
-
+        </div>
+        <div className="header-utilisateur">
+            <Bulle utilisateur={utilisateur} />
+            <span className="header-nom">{utilisateur.prenom} {utilisateur.nom}</span>
+            <button type="button" className="header-deconnexion" onClick={deconnecter}>
+                Se déconnecter
+            </button>
+        </div>
+    </header>
+);
 export default Header;
