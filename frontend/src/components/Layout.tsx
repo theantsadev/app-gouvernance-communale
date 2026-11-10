@@ -1,21 +1,41 @@
-import { Outlet } from "react-router";
+import { useState } from "react";
+import { Outlet, useNavigate } from "react-router";
+import "../assets/css/layout-style.css";
 import Footer from "./Footer";
 import Header from "./Header";
+import PageContent from "./PageContent";
 import Sidebar from "./Sidebar";
 
-
 const Layout = () => {
+    const navigate = useNavigate();
+    const [menuOuvert, setMenuOuvert] = useState(false);
+    const basculerMenu = () => setMenuOuvert((valeur) => !valeur);
+    const fermerMenu = () => setMenuOuvert(false);
+
+    const deconnecter = () => {
+        localStorage.removeItem("commune.session");
+        navigate("/connexion", { replace: true });
+    };
+
     return (
-        <div>
-            <Header utilisateur={{ prenom: "Jean", nom: "Dupont" }} deconnecter={() => {}} />
-            <Sidebar />
-            {/* Outlet : variable désignée pour le contenu remplacable */}
-            <Outlet />
+        <div className="layout">
+            <Header
+                utilisateur={{ prenom: "Test", nom: "Utilisateur" }}
+                deconnecter={deconnecter}
+                menuOuvert={menuOuvert}
+                basculerMenu={basculerMenu}
+            />
+            <div className="layout-corps">
+                <Sidebar ouvert={menuOuvert} fermer={fermerMenu} />
+                <main className="layout-contenu">
+                    <PageContent>
+                        <Outlet />
+                    </PageContent>
+                </main>
+            </div>
             <Footer />
         </div>
     );
-}
+};
 
 export default Layout;
-
-
