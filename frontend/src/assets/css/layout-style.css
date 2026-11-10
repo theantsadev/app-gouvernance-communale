@@ -1,0 +1,25 @@
+.layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-corps {
+    flex: 1;
+    min-width: 0;
+}
+
+.layout-contenu {
+    min-width: 0;
+}
+
+@media (min-width: 768px) {
+    .layout-corps {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .layout-contenu {
+        flex: 1;
+    }
+}
