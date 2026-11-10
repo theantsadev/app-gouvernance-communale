@@ -1,8 +1,8 @@
 import { useId, useState } from "react";
 import type { CSSProperties } from "react";
 import { NavLink, useLocation } from "react-router";
-import { contientCheminActif } from "../config/menu";
-import type { ElementMenu } from "../config/menu";
+import { contientCheminActif } from "../../../config/menu";
+import type { ElementMenu } from "../../../config/menu";
 
 type SidebarItemProps = {
     element: ElementMenu;

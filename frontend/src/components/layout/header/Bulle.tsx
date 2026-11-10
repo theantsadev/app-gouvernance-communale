@@ -1,4 +1,4 @@
-import type { UtilisateurAffiche } from "../types/UtilisateurAffiche";
+import type { UtilisateurAffiche } from "../../../types/UtilisateurAffiche";
 
 
 const obtenirInitiales = ({ prenom, nom }: UtilisateurAffiche) =>

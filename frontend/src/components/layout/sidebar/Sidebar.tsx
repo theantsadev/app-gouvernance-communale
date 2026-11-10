@@ -1,7 +1,7 @@
 
 import "../assets/css/sidebar-style.css";
-import { menuPrincipal } from "../config/menu";
-import SidebarItem from "./SidebarItem";
+import { menuPrincipal } from "../../../config/menu";
+import SidebarItem from "../sidebar/SidebarItem";
 
 type SidebarProps = {
     ouvert: boolean;
