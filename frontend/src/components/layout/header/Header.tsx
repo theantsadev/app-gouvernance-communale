@@ -1,8 +1,8 @@
-import logoCommune from "../assets/img/hero.png";
-import '../assets/css/header-style.css';
+import logoCommune from "../../../assets/img/hero.png";
+import "../../../assets/css/header-style.css";
 import Bulle from "./Bulle";
 import Hamburger from "./Hamburger";
-import type { UtilisateurAffiche } from "../types/UtilisateurAffiche";
+import type { UtilisateurAffiche } from "../../../types/UtilisateurAffiche";
 
 type HeaderProps = {
     utilisateur: UtilisateurAffiche;

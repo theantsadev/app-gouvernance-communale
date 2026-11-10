@@ -1,5 +1,5 @@
 
-import "../assets/css/sidebar-style.css";
+import "../../../assets/css/sidebar-style.css";
 import { menuPrincipal } from "../../../config/menu";
 import SidebarItem from "../sidebar/SidebarItem";
 

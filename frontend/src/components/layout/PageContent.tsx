@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import "../assets/css/page-content-style.css";
+import "../../assets/css/page-content-style.css";
 
 type PageContentProps = {
     children: ReactNode;

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
-import "../assets/css/layout-style.css";
+import "../../assets/css/layout-style.css";
 import Footer from "./Footer";
-import Header from "./Header";
+import Header from "./header/Header";
 import PageContent from "./PageContent";
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar/Sidebar";
 
 const Layout = () => {
     const navigate = useNavigate();
