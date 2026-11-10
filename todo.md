@@ -4,10 +4,10 @@
 | 1 | Préparation | Design |  | Maquettes des écrans (smartphone en priorité) | Affichage | ETU003327 | 1440 | 0 | 1440 | 0,00% |
 | 2 | Préparation | Préparation technique |  | Renforcement des compétences nécessaires (Java, React.js, PostGIS) | Global | ETU003327 | 960 | 0 | 960 | 0,00% |
 | 3 | Préparation | Préparation technique |  | Installation des environnements | Global | ETU003327 | 480 | 0 | 480 | 0,00% |
-| 4 | Développement | Socle commun | Header | Création du header général | Affichage | ETU003327 | 20 | 0 | 20 | 0,00% |
-| 5 | Développement | Socle commun | Sidebar | Création du sidebar  général | Affichage | ETU003327 | 20 | 0 | 20 | 0,00% |
-| 6 | Développement | Socle commun | Footer | Création du footer général | Affichage | ETU003327 | 10 | 0 | 10 | 0,00% |
-| 7 | Développement | Socle commun | Layout | Création du layout général réutilisable | Affichage | ETU003327 | 10 | 0 | 10 | 0,00% |
+| 4 | Développement | Socle commun | Header | Création du header général | Affichage | ETU003327 | 20 | 20 | 0 | 100,00% |
+| 5 | Développement | Socle commun | Sidebar | Création du sidebar  général | Affichage | ETU003327 | 20 | 20 | 0 | 100,00% |
+| 6 | Développement | Socle commun | Footer | Création du footer général | Affichage | ETU003327 | 10 | 10 | 0 | 100,00% |
+| 7 | Développement | Socle commun | Layout | Création du layout général réutilisable | Affichage | ETU003327 | 10 | 10 | 0 | 100,00% |
 | 8 | Développement | Socle commun |  | Connexion, déconnexion et session sécurisée (USR-003) |  | ETU003327 | 720 | 0 | 720 | 0,00% |
 | 9 | Développement | Socle commun |  | Gestion des rôles et permissions : maire, SG, chefs de service, agents, administrateur (USR-002) |  | ETU003327 | 1200 | 0 | 1200 | 0,00% |
 | 10 | Développement | Socle commun |  | CRUD comptes utilisateurs (USR-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
