@@ -23,7 +23,7 @@
 | AUTH012 | Développement | Authentification |  | Création du client HTTP partagé sous src/services/apiClient.ts avec URL VITE_API_URL et transformation des erreurs en ApiError | Intégration | ETU003327 | 15 | 0 | 15 | 0,00% |
 | AUTH013 | Développement | Authentification |  | Déplacement des types de l'authentification sous src/types et création du fichier .env.example avec VITE_API_URL sans secret | Intégration | ETU003327 | 10 | 10 | 0 | 100,00% |
 | AUTH014 | Développement | Authentification |  | Création de la fonction d'initialisation du premier administrateur au démarrage avec ADMIN_EMAIL et ADMIN_PASSWORD seulement si aucun administrateur n'existe | Métier | ETU003327 | 30 | 30 | 0 | 100,00% |
-| AUTH015 | Tests | Authentification |  | Création des tests d'initialisation du premier administrateur : création unique, variables absentes et administrateur déjà existant | Tests | ETU003327 | 20 | 0 | 20 | 0,00% |
+| AUTH015 | Tests | Authentification |  | Création des tests d'initialisation du premier administrateur : création unique, variables absentes et administrateur déjà existant | Tests | ETU003327 | 20 | 20 | 0 | 100,00% |
 | 9 | Développement | Socle commun |  | Gestion des rôles et permissions : maire, SG, chefs de service, agents, administrateur (USR-002) |  | ETU003327 | 1200 | 0 | 1200 | 0,00% |
 | 10 | Développement | Socle commun |  | CRUD comptes utilisateurs (USR-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
 | 11 | Développement | Socle commun |  | Référentiels : FKT, types de signalement, statuts, services (SYS-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
