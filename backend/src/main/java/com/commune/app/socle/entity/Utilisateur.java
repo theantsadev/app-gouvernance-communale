@@ -48,6 +48,27 @@ public class Utilisateur {
     protected Utilisateur() {
     }
 
+    public Utilisateur(
+            String idUtilisateur,
+            String email,
+            String motDePasseHash,
+            String nom,
+            String prenom,
+            LocalDateTime dateCreation,
+            LocalDateTime dateModification,
+            boolean actif,
+            String idRole) {
+        this.idUtilisateur = idUtilisateur;
+        this.email = email;
+        this.motDePasseHash = motDePasseHash;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateCreation = dateCreation;
+        this.dateModification = dateModification;
+        this.actif = actif;
+        this.idRole = idRole;
+    }
+
     public String getIdUtilisateur() {
         return idUtilisateur;
     }
