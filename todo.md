@@ -1,14 +1,25 @@
 | ID | Catégorie | Module | Page | Tâche détaillée | Type | Qui | Estimation | Temps passé | Reste à faire | Avancement |
 |---:|---|---|---|---|---|---|---:|---:|---:|---:|
 | 0 | Préparation | Analyse et conception |  | Analyse, conception (E/A et base de données) | Global | ETU003327 | 3840 | 3840 | 0 | 100,00% |
-| 1 | Préparation | Design |  | Maquettes des écrans (smartphone en priorité) | Affichage | ETU003327 | 1440 | 0 | 1440 | 0,00% |
-| 2 | Préparation | Préparation technique |  | Renforcement des compétences nécessaires (Java, React.js, PostGIS) | Global | ETU003327 | 960 | 0 | 960 | 0,00% |
-| 3 | Préparation | Préparation technique |  | Installation des environnements | Global | ETU003327 | 480 | 0 | 480 | 0,00% |
+| 1 | Préparation | Design |  | Maquettes des écrans (smartphone en priorité) | Affichage | ETU003327 | 1440 | 1440 | 0 | 100,00% |
+| 2 | Préparation | Préparation technique |  | Renforcement des compétences nécessaires (Java, React.js, PostGIS) | Global | ETU003327 | 960 | 960 | 0 | 100,00% |
+| 3 | Préparation | Préparation technique |  | Installation des environnements | Global | ETU003327 | 480 | 480 | 0 | 100,00% |
 | 4 | Développement | Socle commun | Header | Création du header général | Affichage | ETU003327 | 20 | 20 | 0 | 100,00% |
 | 5 | Développement | Socle commun | Sidebar | Création du sidebar  général | Affichage | ETU003327 | 20 | 20 | 0 | 100,00% |
 | 6 | Développement | Socle commun | Footer | Création du footer général | Affichage | ETU003327 | 10 | 10 | 0 | 100,00% |
 | 7 | Développement | Socle commun | Layout | Création du layout général réutilisable | Affichage | ETU003327 | 10 | 10 | 0 | 100,00% |
-| 8 | Développement | Socle commun |  | Connexion, déconnexion et session sécurisée (USR-003) |  | ETU003327 | 720 | 0 | 720 | 0,00% |
+| AUTH | Développement | Authentification |  | Connexion et session sécurisée sans déconnexion, rôles ni permissions (USR-003) |  | ETU003327 | 720 | 0 | 720 | 0,00% |
+| LOGIN001 | Développement | Authentification | LoginPage | Création de la page de login sous socle/auth | Affichage | ETU003327 | 10 | 0 | 10 | 0,00% |
+| LOGIN002 | Développement | Authentification |  | Création de la classe Utilisateur (exactement attribut de la base en version camelCase sans renommage) sous socle/entity | Métier | ETU003327 | 5 | 0 |  | #DIV/0! |
+| LOGIN003 | Développement | Authentification |  | Création de la classe ou record UtilisateurLib (idUtilisateur,email,nom,prenom) sous socle/lib | Métier | ETU003327 | 5 | 0 |  | #DIV/0! |
+| LOGIN004 | Développement | Authentification |  | Création de la fonction UtilisateurLib login(LoginRequest requete) dans AuthService avec vérification de l'utilisateur, du mot de passe et du compte actif | Métier | ETU003327 | 30 | 0 | 30 | 0,00% |
+| LOGIN005 | Développement | Authentification |  | Création de l'api : /api/auth/login avec la fonction UtilisateurLib login(LoginRequest requete) dans AuthController | Métier | ETU003327 | 20 | 0 |  | #DIV/0! |
+| LOGIN006 | Développement | Authentification |  | Creation de la fonction login(email,motDePasse) sous src/services/authApi.ts qui appelle /api/auth/login | Intégration | ETU003327 | 20 | 0 |  | #DIV/0! |
+| LOGIN007 | Développement | Authentification |  | Création de la classe LoginRequest (email,motDePasse) avec contrôle des champs sous socle/dto | Métier | ETU003327 | 5 | 0 |  | #DIV/0! |
+| LOGIN008 | Développement | Authentification |  | Création de la classe HistoriqueConnexion (exactement attribut de la base en version camelCase sans renommage) sous socle/entity | Métier | ETU003327 | 5 | 0 |  | #DIV/0! |
+| LOGIN009 | Développement | Authentification |  | Création de la fonction d'enregistrement des connexions et des échecs dans HistoriqueConnexionService avec une transaction séparée pour les échecs | Métier | ETU003327 | 15 | 0 | 15 | 0,00% |
+| LOGIN010 | Développement | Authentification |  | Création du service de génération du token JWT avec durée et secret lus dans les variables d'environnement sous socle/security | Métier | ETU003327 | 20 | 0 | 20 | 0,00% |
+| LOGIN011 | Tests | Authentification |  | Création des tests de connexion : champs invalides, identifiants invalides, compte désactivé, connexion valide et conservation de l'échec dans l'historique | Tests | ETU003327 | 30 | 0 | 30 | 0,00% |
 | 9 | Développement | Socle commun |  | Gestion des rôles et permissions : maire, SG, chefs de service, agents, administrateur (USR-002) |  | ETU003327 | 1200 | 0 | 1200 | 0,00% |
 | 10 | Développement | Socle commun |  | CRUD comptes utilisateurs (USR-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
 | 11 | Développement | Socle commun |  | Référentiels : FKT, types de signalement, statuts, services (SYS-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
