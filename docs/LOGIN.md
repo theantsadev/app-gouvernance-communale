@@ -117,7 +117,7 @@ Le secret et la durée du jeton viennent des variables d'environnement.
 ## Intégration
 
 ```http
-POST /api/auth/login
+POST /api/socle/auth/login
 ```
 
 Corps :
