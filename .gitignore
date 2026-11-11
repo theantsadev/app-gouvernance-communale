@@ -21,6 +21,7 @@ frontend/.env.*
 .env
 .env.*
 !.env.example
+*.local.bat
 
 # Uploaded files and generated runtime data
 uploads/
