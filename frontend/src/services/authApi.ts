@@ -11,13 +11,19 @@ export type ApiError = {
     champ?: string;
 };
 
+export type LoginResponse = {
+    token: string;
+    expiresIn: number;
+    utilisateur: UtilisateurLib;
+};
+
 const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8080";
 
 // Intégration : appelle l'API de connexion et transforme ses erreurs.
 export async function login(
     email: string,
     motDePasse: string,
-): Promise<UtilisateurLib> {
+): Promise<LoginResponse> {
     const response = await fetch(`${apiUrl}/api/socle/auth/login`, {
         method: "POST",
         headers: {
@@ -27,7 +33,7 @@ export async function login(
     });
 
     if (response.ok) {
-        return response.json() as Promise<UtilisateurLib>;
+        return response.json() as Promise<LoginResponse>;
     }
 
     const erreur = await response.json().catch(() => null) as ApiError | null;

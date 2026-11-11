@@ -31,8 +31,8 @@ const LoginPage = () => {
         setEnvoiEnCours(true);
 
         try {
-            const utilisateur = await login(champs.email, champs.motDePasse);
-            localStorage.setItem("commune.session", JSON.stringify(utilisateur));
+            const session = await login(champs.email, champs.motDePasse);
+            localStorage.setItem("commune.session", JSON.stringify(session));
             navigate("/", { replace: true });
         } catch (cause) {
             setErreur(cause as ApiError);

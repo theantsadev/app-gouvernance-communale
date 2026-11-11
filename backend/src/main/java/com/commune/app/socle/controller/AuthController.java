@@ -1,7 +1,7 @@
 package com.commune.app.socle.controller;
 
 import com.commune.app.socle.dto.LoginRequest;
-import com.commune.app.socle.lib.UtilisateurLib;
+import com.commune.app.socle.dto.LoginResponse;
 import com.commune.app.socle.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +21,9 @@ public class AuthController {
 
     // Intégration : expose la route publique de connexion.
     @PostMapping("/login")
-    public ResponseEntity<UtilisateurLib> login(@RequestBody LoginRequest requete) {
-        return ResponseEntity.ok(authService.login(requete));
+    public ResponseEntity<LoginResponse> login(
+            @RequestBody LoginRequest requete,
+            jakarta.servlet.http.HttpServletRequest request) {
+        return ResponseEntity.ok(authService.login(requete, request.getRemoteAddr()));
     }
 }
