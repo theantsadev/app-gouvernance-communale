@@ -1,17 +1,5 @@
 import { apiFetch } from "./apiClient";
-
-export type UtilisateurLib = {
-    idUtilisateur: string;
-    email: string;
-    nom: string;
-    prenom: string;
-};
-
-export type LoginResponse = {
-    token: string;
-    expiresIn: number;
-    utilisateur: UtilisateurLib;
-};
+import type { LoginResponse } from "../types/auth";
 
 // Intégration : appelle l'API de connexion avec le client HTTP partagé.
 export async function login(
