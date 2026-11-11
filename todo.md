@@ -9,7 +9,7 @@
 | 6 | Développement | Socle commun | Footer | Création du footer général | Affichage | ETU003327 | 10 | 10 | 0 | 100,00% |
 | 7 | Développement | Socle commun | Layout | Création du layout général réutilisable | Affichage | ETU003327 | 10 | 10 | 0 | 100,00% |
 | AUTH | Développement | Authentification |  | Connexion et session sécurisée sans déconnexion, rôles ni permissions (USR-003) |  | ETU003327 | 720 | 0 | 720 | 0,00% |
-| LOGIN001 | Développement | Authentification | LoginPage | Création de la page de login sous socle/auth | Affichage | ETU003327 | 10 | 0 | 10 | 0,00% |
+| LOGIN001 | Développement | Authentification | LoginPage | Création de la page de login sous socle/auth | Affichage | ETU003327 | 10 | 10 | 0 | 100,00% |
 | LOGIN002 | Développement | Authentification |  | Création de la classe Utilisateur (exactement attribut de la base en version camelCase sans renommage) sous socle/entity | Métier | ETU003327 | 5 | 0 |  | #DIV/0! |
 | LOGIN003 | Développement | Authentification |  | Création de la classe ou record UtilisateurLib (idUtilisateur,email,nom,prenom) sous socle/lib | Métier | ETU003327 | 5 | 0 |  | #DIV/0! |
 | LOGIN004 | Développement | Authentification |  | Création de la fonction UtilisateurLib login(LoginRequest requete) dans AuthService avec vérification de l'utilisateur, du mot de passe et du compte actif | Métier | ETU003327 | 30 | 0 | 30 | 0,00% |
