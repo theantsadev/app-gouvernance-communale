@@ -2,7 +2,8 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { useNavigate } from "react-router";
 import "../../assets/css/login-style.css";
-import { login, type ApiError } from "../../services/authApi";
+import { login } from "../../services/authApi";
+import type { ApiError } from "../../types/api";
 
 type ChampsConnexion = {
     email: string;

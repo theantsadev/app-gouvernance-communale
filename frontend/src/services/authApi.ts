@@ -1,14 +1,10 @@
+import { apiFetch } from "./apiClient";
+
 export type UtilisateurLib = {
     idUtilisateur: string;
     email: string;
     nom: string;
     prenom: string;
-};
-
-export type ApiError = {
-    code: string;
-    message: string;
-    champ?: string;
 };
 
 export type LoginResponse = {
@@ -17,31 +13,13 @@ export type LoginResponse = {
     utilisateur: UtilisateurLib;
 };
 
-const apiUrl = import.meta.env.VITE_API_URL ?? "http://localhost:8080";
-
-// Intégration : appelle l'API de connexion et transforme ses erreurs.
+// Intégration : appelle l'API de connexion avec le client HTTP partagé.
 export async function login(
     email: string,
     motDePasse: string,
 ): Promise<LoginResponse> {
-    const response = await fetch(`${apiUrl}/api/socle/auth/login`, {
+    return apiFetch<LoginResponse>("/api/socle/auth/login", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
         body: JSON.stringify({ email, motDePasse }),
     });
-
-    if (response.ok) {
-        return response.json() as Promise<LoginResponse>;
-    }
-
-    const erreur = await response.json().catch(() => null) as ApiError | null;
-    if (erreur?.code && erreur.message) {
-        throw erreur;
-    }
-    throw {
-        code: "ERREUR_RESEAU",
-        message: "La connexion au serveur est impossible.",
-    } satisfies ApiError;
 }
