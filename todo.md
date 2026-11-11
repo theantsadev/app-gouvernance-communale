@@ -17,7 +17,7 @@
 | LOGIN006 | Développement | Authentification |  | Creation de la fonction login(email,motDePasse) sous src/services/authApi.ts qui appelle /api/socle/auth/login | Intégration | ETU003327 | 20 | 20 | 0 | 100,00% |
 | LOGIN007 | Développement | Authentification |  | Création de la classe LoginRequest (email,motDePasse) avec contrôle des champs sous socle/dto | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
 | LOGIN008 | Développement | Authentification |  | Création de la classe HistoriqueConnexion (exactement attribut de la base en version camelCase sans renommage) sous socle/entity | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
-| LOGIN009 | Développement | Authentification |  | Création de la fonction d'enregistrement des connexions et des échecs dans HistoriqueConnexionService avec une transaction séparée pour les échecs | Métier | ETU003327 | 15 | 0 | 15 | 0,00% |
+| LOGIN009 | Développement | Authentification |  | Création de la fonction d'enregistrement des connexions et des échecs dans HistoriqueConnexionService avec une transaction séparée pour les échecs | Métier | ETU003327 | 15 | 15 | 0 | 100,00% |
 | LOGIN010 | Développement | Authentification |  | Création du service de génération du token JWT avec durée et secret lus dans les variables d'environnement sous socle/security | Métier | ETU003327 | 20 | 0 | 20 | 0,00% |
 | LOGIN011 | Tests | Authentification |  | Création des tests de connexion : champs invalides, identifiants invalides, compte désactivé, connexion valide et conservation de l'échec dans l'historique | Tests | ETU003327 | 30 | 0 | 30 | 0,00% |
 | 9 | Développement | Socle commun |  | Gestion des rôles et permissions : maire, SG, chefs de service, agents, administrateur (USR-002) |  | ETU003327 | 1200 | 0 | 1200 | 0,00% |
