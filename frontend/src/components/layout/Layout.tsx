@@ -20,7 +20,7 @@ const Layout = () => {
     return (
         <div className="layout">
             <Header
-                utilisateur={{ prenom: "Test", nom: "Utilisateur" }}
+                utilisateur={{ prenom: "Test", nom: "Utilisateur", email: "test@exemple.com", idUtilisateur: "1" }}
                 deconnecter={deconnecter}
                 menuOuvert={menuOuvert}
                 basculerMenu={basculerMenu}
