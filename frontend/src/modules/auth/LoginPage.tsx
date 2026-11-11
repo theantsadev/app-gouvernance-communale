@@ -4,11 +4,7 @@ import { useNavigate } from "react-router";
 import "../../assets/css/login-style.css";
 import { login } from "../../services/authApi";
 import type { ApiError } from "../../types/api";
-
-type ChampsConnexion = {
-    email: string;
-    motDePasse: string;
-};
+import type { ChampsConnexion } from "../../types/auth";
 
 const LoginPage = () => {
     const navigate = useNavigate();

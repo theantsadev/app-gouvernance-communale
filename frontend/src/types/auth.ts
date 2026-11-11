@@ -10,3 +10,8 @@ export type LoginResponse = {
     expiresIn: number;
     utilisateur: UtilisateurLib;
 };
+
+export type ChampsConnexion = {
+    email: string;
+    motDePasse: string;
+};
