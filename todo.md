@@ -14,7 +14,7 @@
 | LOGIN003 | Développement | Authentification |  | Création de la classe ou record UtilisateurLib (idUtilisateur,email,nom,prenom) sous socle/lib | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
 | LOGIN004 | Développement | Authentification |  | Création de la fonction UtilisateurLib login(LoginRequest requete) dans AuthService avec vérification de l'utilisateur, du mot de passe et du compte actif | Métier | ETU003327 | 30 | 30 | 0 | 100,00% |
 | LOGIN005 | Développement | Authentification |  | Création de l'api : /api/socle/auth/login avec la fonction UtilisateurLib login(LoginRequest requete) dans AuthController | Métier | ETU003327 | 20 | 20 | 0 | 100,00% |
-| LOGIN006 | Développement | Authentification |  | Creation de la fonction login(email,motDePasse) sous src/services/authApi.ts qui appelle /api/socle/auth/login | Intégration | ETU003327 | 20 | 0 |  | #DIV/0! |
+| LOGIN006 | Développement | Authentification |  | Creation de la fonction login(email,motDePasse) sous src/services/authApi.ts qui appelle /api/socle/auth/login | Intégration | ETU003327 | 20 | 20 | 0 | 100,00% |
 | LOGIN007 | Développement | Authentification |  | Création de la classe LoginRequest (email,motDePasse) avec contrôle des champs sous socle/dto | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
 | LOGIN008 | Développement | Authentification |  | Création de la classe HistoriqueConnexion (exactement attribut de la base en version camelCase sans renommage) sous socle/entity | Métier | ETU003327 | 5 | 0 |  | #DIV/0! |
 | LOGIN009 | Développement | Authentification |  | Création de la fonction d'enregistrement des connexions et des échecs dans HistoriqueConnexionService avec une transaction séparée pour les échecs | Métier | ETU003327 | 15 | 0 | 15 | 0,00% |

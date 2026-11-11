@@ -1,6 +1,8 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
+import { useNavigate } from "react-router";
 import "../../assets/css/login-style.css";
+import { login, type ApiError } from "../../services/authApi";
 
 type ChampsConnexion = {
     email: string;
@@ -8,19 +10,35 @@ type ChampsConnexion = {
 };
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const [champs, setChamps] = useState<ChampsConnexion>({
         email: "",
         motDePasse: "",
     });
+    const [erreur, setErreur] = useState<ApiError | null>(null);
+    const [envoiEnCours, setEnvoiEnCours] = useState(false);
 
     // Affichage : conserve les valeurs saisies par l'utilisateur.
     const modifierChamp = (champ: keyof ChampsConnexion, valeur: string) => {
         setChamps((valeurs) => ({ ...valeurs, [champ]: valeur }));
+        setErreur(null);
     };
 
-    // Affichage : prépare le formulaire pour le branchement de LOGIN006.
-    const soumettre = (event: FormEvent<HTMLFormElement>) => {
+    // Intégration : appelle l'API, conserve la session et redirige.
+    const soumettre = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setErreur(null);
+        setEnvoiEnCours(true);
+
+        try {
+            const utilisateur = await login(champs.email, champs.motDePasse);
+            localStorage.setItem("commune.session", JSON.stringify(utilisateur));
+            navigate("/", { replace: true });
+        } catch (cause) {
+            setErreur(cause as ApiError);
+        } finally {
+            setEnvoiEnCours(false);
+        }
     };
 
     return (
@@ -30,6 +48,10 @@ const LoginPage = () => {
                 <p className="login-introduction">
                     Accédez à votre espace de gouvernance communale.
                 </p>
+
+                {erreur && !erreur.champ && (
+                    <p className="login-erreur" role="alert">{erreur.message}</p>
+                )}
 
                 <form onSubmit={soumettre}>
                     <div className="login-champ">
@@ -42,7 +64,11 @@ const LoginPage = () => {
                             required
                             value={champs.email}
                             onChange={(event) => modifierChamp("email", event.target.value)}
+                            aria-invalid={erreur?.champ === "email"}
                         />
+                        {erreur?.champ === "email" && (
+                            <span className="login-erreur-champ">{erreur.message}</span>
+                        )}
                     </div>
 
                     <div className="login-champ">
@@ -55,11 +81,15 @@ const LoginPage = () => {
                             required
                             value={champs.motDePasse}
                             onChange={(event) => modifierChamp("motDePasse", event.target.value)}
+                            aria-invalid={erreur?.champ === "motDePasse"}
                         />
+                        {erreur?.champ === "motDePasse" && (
+                            <span className="login-erreur-champ">{erreur.message}</span>
+                        )}
                     </div>
 
-                    <button className="login-bouton" type="submit">
-                        Se connecter
+                    <button className="login-bouton" type="submit" disabled={envoiEnCours}>
+                        {envoiEnCours ? "Connexion..." : "Se connecter"}
                     </button>
                 </form>
             </section>

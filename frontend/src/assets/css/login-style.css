@@ -61,6 +61,27 @@
     cursor: pointer;
 }
 
+.login-bouton:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.login-erreur,
+.login-erreur-champ {
+    color: #b91c1c;
+}
+
+.login-erreur {
+    margin: 0 0 1rem;
+    padding: 0.75rem;
+    border-radius: 0.35rem;
+    background: #fef2f2;
+}
+
+.login-erreur-champ {
+    font-size: 0.875rem;
+}
+
 @media (max-width: 767px) {
     .login-page {
         padding: 1rem;
