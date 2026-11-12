@@ -3,11 +3,7 @@ package com.commune.app.socle.controller;
 import com.commune.app.socle.dto.LoginRequest;
 import com.commune.app.socle.dto.LoginResponse;
 import com.commune.app.socle.dto.SessionValidResponse;
-import com.commune.app.socle.entity.Utilisateur;
-import com.commune.app.socle.repository.UtilisateurRepository;
-import com.commune.app.socle.service.HistoriqueConnexionService;
 import com.commune.app.socle.service.AuthService;
-import com.commune.app.socle.service.SessionAuthentificationService;
 import org.springframework.security.core.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,19 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
-    private final SessionAuthentificationService sessionService;
-    private final HistoriqueConnexionService historiqueConnexionService;
-    private final UtilisateurRepository utilisateurRepository;
 
-    public AuthController(
-            AuthService authService,
-            SessionAuthentificationService sessionService,
-            HistoriqueConnexionService historiqueConnexionService,
-            UtilisateurRepository utilisateurRepository) {
+    public AuthController(AuthService authService) {
         this.authService = authService;
-        this.sessionService = sessionService;
-        this.historiqueConnexionService = historiqueConnexionService;
-        this.utilisateurRepository = utilisateurRepository;
     }
 
     // Intégration : expose la route publique de connexion.
@@ -49,12 +35,7 @@ public class AuthController {
             jakarta.servlet.http.HttpServletRequest request,
             Authentication authentication) {
         String token = extraireToken(request);
-        Utilisateur utilisateur = utilisateurRepository.findById(authentication.getName())
-                .orElseThrow();
-        sessionService.revoquer(token);
-        historiqueConnexionService.enregistrerDeconnexion(
-                utilisateur,
-                request.getRemoteAddr());
+            authService.logout(token, authentication.getName(), request.getRemoteAddr());
         return ResponseEntity.noContent().build();
     }
 

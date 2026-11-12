@@ -85,4 +85,12 @@ public class AuthService {
             throw exception;
         }
     }
+
+    // Métier : révoque la session et historise la déconnexion.
+    @Transactional
+    public void logout(String token, String idUtilisateur, String adresseIp) {
+        Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
+        sessionService.revoquer(token);
+        historiqueConnexionService.enregistrerDeconnexion(utilisateur, adresseIp);
+    }
 }

@@ -1,8 +1,8 @@
 package com.commune.app.socle.security;
 
 import com.commune.app.socle.entity.Utilisateur;
-import com.commune.app.socle.repository.UtilisateurRepository;
 import com.commune.app.socle.service.SessionAuthentificationService;
+import com.commune.app.socle.service.UtilisateurService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,18 +19,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final SessionAuthentificationService sessionService;
-    private final UtilisateurRepository utilisateurRepository;
+    private final UtilisateurService utilisateurService;
 
     public JwtAuthenticationFilter(
             JwtService jwtService,
             SessionAuthentificationService sessionService,
-            UtilisateurRepository utilisateurRepository) {
+            UtilisateurService utilisateurService) {
         this.jwtService = jwtService;
         this.sessionService = sessionService;
-        this.utilisateurRepository = utilisateurRepository;
+        this.utilisateurService = utilisateurService;
     }
 
-    // Métier : place uniquement un utilisateur avec JWT et session valides dans le contexte.
+    // Métier : place uniquement un utilisateur avec JWT et session valides dans le
+    // contexte.
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
@@ -51,13 +52,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        Utilisateur utilisateur = utilisateurRepository.findById(idUtilisateur).orElse(null);
-        if (utilisateur == null || !utilisateur.isActif()) {
+        Utilisateur utilisateur;
+        try {
+            utilisateur = utilisateurService.findById(idUtilisateur);
+        } catch (IllegalStateException exception) {
+            return;
+        }
+        if (!utilisateur.isActif()) {
             return;
         }
 
-        UsernamePasswordAuthenticationToken authentication =
-                new UsernamePasswordAuthenticationToken(idUtilisateur, null, java.util.List.of());
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(idUtilisateur,
+                null, java.util.List.of());
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
