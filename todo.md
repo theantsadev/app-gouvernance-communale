@@ -27,7 +27,7 @@
 | AUTH016 | Correction | Authentification |  | Correction de la configuration CORS pour autoriser le frontend selon CORS_ALLOWED_ORIGINS et traiter les requêtes OPTIONS | Correction | ETU003327 | 10 | 0 | 10 | 0,00% |
 | SESSION001 | Développement | Authentification |  | Création de la classe SessionAuthentification (exactement attribut de la base en version camelCase sans renommage) sous socle/entity | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
 | SESSION002 | Développement | Authentification |  | Création de la fonction de création, validation et révocation de la session dans SessionAuthentificationService | Métier | ETU003327 | 30 | 30 | 0 | 100,00% |
-| SESSION003 | Développement | Authentification |  | Création du filtre JWT qui valide le token et la session avant de placer l'utilisateur connecté dans le SecurityContext | Métier | ETU003327 | 30 | 0 | 30 | 0,00% |
+| SESSION003 | Développement | Authentification |  | Création du filtre JWT qui valide le token et la session avant de placer l'utilisateur connecté dans le SecurityContext | Métier | ETU003327 | 30 | 30 | 0 | 100,00% |
 | SESSION004 | Développement | Authentification |  | Modification de la fonction login(email,motDePasse) pour créer une session persistée et retourner son token | Métier | ETU003327 | 20 | 0 | 20 | 0,00% |
 | SESSION005 | Développement | Authentification |  | Création de l'api : /api/socle/auth/logout pour révoquer la session et enregistrer la déconnexion | Métier | ETU003327 | 20 | 0 | 20 | 0,00% |
 | SESSION006 | Développement | Authentification |  | Création de l'api : /api/socle/auth/session/valid pour vérifier si la session courante est valide | Métier | ETU003327 | 15 | 0 | 15 | 0,00% |

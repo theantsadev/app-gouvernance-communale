@@ -1,6 +1,7 @@
 package com.commune.app.socle.security;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
@@ -39,5 +40,32 @@ public class JwtService {
 
     public long getDureeSecondes() {
         return dureeSecondes;
+    }
+
+    public String extraireUtilisateur(String token) {
+        try {
+            return Jwts.parser()
+                    .verifyWith(cle)
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload()
+                    .getSubject();
+        } catch (JwtException | IllegalArgumentException exception) {
+            return null;
+        }
+    }
+
+    public Instant dateExpiration(String token) {
+        try {
+            return Jwts.parser()
+                    .verifyWith(cle)
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload()
+                    .getExpiration()
+                    .toInstant();
+        } catch (JwtException | IllegalArgumentException exception) {
+            return null;
+        }
     }
 }
