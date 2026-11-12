@@ -145,7 +145,7 @@ class AuthServiceTest {
         private final Utilisateur utilisateur;
 
         FakeUtilisateurService(Utilisateur utilisateur) {
-            super((UtilisateurRepository) null);
+            super((UtilisateurRepository) null, null);
             this.utilisateur = utilisateur;
         }
 
