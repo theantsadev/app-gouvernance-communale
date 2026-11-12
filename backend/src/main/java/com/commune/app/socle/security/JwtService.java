@@ -44,7 +44,8 @@ public class JwtService {
         return dureeSecondes;
     }
 
-    // Sécurité : extrait le token Bearer commun à toutes les requêtes authentifiées.
+    // Sécurité : extrait le token Bearer commun à toutes les requêtes
+    // authentifiées.
     public Optional<String> extraireToken(HttpServletRequest request) {
         String authorization = request.getHeader("Authorization");
         if (authorization == null || !authorization.startsWith("Bearer ")) {
