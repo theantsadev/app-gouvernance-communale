@@ -34,9 +34,9 @@
 | SESSION007 | Développement | Authentification |  | Création de l'api : /api/socle/utilisateur/current pour retourner l'utilisateur connecté depuis le SecurityContext | Métier | ETU003327 | 15 | 15 | 0 | 100,00% |
 | SESSION008 | Développement | Authentification | Layout | Sécurisation du layout : vérifier la session au démarrage, rediriger vers /connexion si elle est absente ou invalide et ne jamais afficher de données utilisateur par défaut | Affichage | ETU003327 | 25 | 0 | 25 | 0,00% |
 | SESSION009 | Développement | Authentification |  | Ajout du client partagé pour envoyer le token Authorization Bearer et supprimer la session sur une réponse 401 | Intégration | ETU003327 | 15 | 15 | 0 | 100,00% |
-| SESSION010 | Développement | Authentification |  | Création de la fonction logout() sous src/services/authApi.ts qui appelle /api/socle/auth/logout et supprime commune.session | Intégration | ETU003327 | 10 | 0 | 10 | 0,00% |
-| SESSION011 | Développement | Authentification |  | Création de la fonction sessionValide() sous src/services/authApi.ts qui appelle /api/socle/auth/session/valid | Intégration | ETU003327 | 10 | 0 | 10 | 0,00% |
-| SESSION012 | Développement | Authentification |  | Création de la fonction utilisateurConnecte() sous src/services/authApi.ts qui appelle /api/socle/utilisateur/current | Intégration | ETU003327 | 10 | 0 | 10 | 0,00% |
+| SESSION010 | Développement | Authentification |  | Création de la fonction logout() sous src/services/authApi.ts qui appelle /api/socle/auth/logout et supprime commune.session | Intégration | ETU003327 | 10 | 10 | 0 | 100,00% |
+| SESSION011 | Développement | Authentification |  | Création de la fonction sessionValide() sous src/services/authApi.ts qui appelle /api/socle/auth/session/valid | Intégration | ETU003327 | 10 | 10 | 0 | 100,00% |
+| SESSION012 | Développement | Authentification |  | Création de la fonction utilisateurConnecte() sous src/services/authApi.ts qui appelle /api/socle/utilisateur/current | Intégration | ETU003327 | 10 | 10 | 0 | 100,00% |
 | SESSION013 | Tests | Authentification |  | Création des tests de session : token absent, token expiré, session révoquée, déconnexion et utilisateur connecté | Tests | ETU003327 | 30 | 0 | 30 | 0,00% |
 | 9 | Développement | Socle commun |  | Gestion des rôles et permissions : maire, SG, chefs de service, agents, administrateur (USR-002) |  | ETU003327 | 1200 | 0 | 1200 | 0,00% |
 | 10 | Développement | Socle commun |  | CRUD comptes utilisateurs (USR-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
