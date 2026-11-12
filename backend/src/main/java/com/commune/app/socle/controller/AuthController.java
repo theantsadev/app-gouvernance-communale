@@ -4,6 +4,7 @@ import com.commune.app.socle.dto.LoginRequest;
 import com.commune.app.socle.dto.LoginResponse;
 import com.commune.app.socle.dto.SessionValidResponse;
 import com.commune.app.socle.service.AuthService;
+import com.commune.app.socle.security.JwtService;
 import org.springframework.security.core.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
+    private final JwtService jwtService;
 
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, JwtService jwtService) {
         this.authService = authService;
+        this.jwtService = jwtService;
     }
 
     // Intégration : expose la route publique de connexion.
@@ -34,8 +37,10 @@ public class AuthController {
     public ResponseEntity<Void> logout(
             jakarta.servlet.http.HttpServletRequest request,
             Authentication authentication) {
-        String token = extraireToken(request);
-            authService.logout(token, authentication.getName(), request.getRemoteAddr());
+        String token = jwtService.extraireToken(request)
+                .orElseThrow(() -> new IllegalStateException(
+                        "Le token de session est obligatoire."));
+        authService.logout(token, authentication.getName(), request.getRemoteAddr());
         return ResponseEntity.noContent().build();
     }
 
@@ -45,11 +50,4 @@ public class AuthController {
         return ResponseEntity.ok(new SessionValidResponse(true));
     }
 
-    private String extraireToken(jakarta.servlet.http.HttpServletRequest request) {
-        String authorization = request.getHeader("Authorization");
-        if (authorization == null || !authorization.startsWith("Bearer ")) {
-            throw new IllegalStateException("Le token de session est obligatoire.");
-        }
-        return authorization.substring("Bearer ".length()).trim();
-    }
 }

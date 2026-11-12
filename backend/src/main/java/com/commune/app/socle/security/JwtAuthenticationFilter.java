@@ -37,7 +37,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             HttpServletRequest request,
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
-        String token = extraireToken(request);
+        String token = jwtService.extraireToken(request).orElse(null);
         if (token != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             authentifier(token, request);
         }
@@ -68,12 +68,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
-    private String extraireToken(HttpServletRequest request) {
-        String authorization = request.getHeader("Authorization");
-        if (authorization == null || !authorization.startsWith("Bearer ")) {
-            return null;
-        }
-        String token = authorization.substring("Bearer ".length()).trim();
-        return token.isEmpty() ? null : token;
-    }
 }

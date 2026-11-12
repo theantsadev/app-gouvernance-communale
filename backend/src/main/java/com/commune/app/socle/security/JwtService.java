@@ -6,7 +6,9 @@ import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Optional;
 import javax.crypto.SecretKey;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,16 @@ public class JwtService {
 
     public long getDureeSecondes() {
         return dureeSecondes;
+    }
+
+    // Sécurité : extrait le token Bearer commun à toutes les requêtes authentifiées.
+    public Optional<String> extraireToken(HttpServletRequest request) {
+        String authorization = request.getHeader("Authorization");
+        if (authorization == null || !authorization.startsWith("Bearer ")) {
+            return Optional.empty();
+        }
+        String token = authorization.substring("Bearer ".length()).trim();
+        return token.isEmpty() ? Optional.empty() : Optional.of(token);
     }
 
     public String extraireUtilisateur(String token) {
