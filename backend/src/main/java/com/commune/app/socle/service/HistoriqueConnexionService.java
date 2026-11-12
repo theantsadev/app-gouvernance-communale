@@ -33,6 +33,16 @@ public class HistoriqueConnexionService {
         enregistrer(email, "ECHEC", adresseIp, idUtilisateur);
     }
 
+    // Base : conserve la déconnexion de l'utilisateur identifié.
+    @Transactional
+    public void enregistrerDeconnexion(Utilisateur utilisateur, String adresseIp) {
+        enregistrer(
+                utilisateur.getEmail(),
+                "DECONNEXION",
+                adresseIp,
+                utilisateur.getIdUtilisateur());
+    }
+
     private void enregistrer(
             String email,
             String type,
