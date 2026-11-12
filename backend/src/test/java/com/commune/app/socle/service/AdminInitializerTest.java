@@ -19,11 +19,8 @@ class AdminInitializerTest {
         UtilisateurRepository repository = org.mockito.Mockito.mock(UtilisateurRepository.class);
         PasswordEncoder passwordEncoder = org.mockito.Mockito.mock(PasswordEncoder.class);
         when(repository.existsByIdRole("ADMINISTRATEUR")).thenReturn(true);
-        AdminInitializer initializer = new AdminInitializer(
-                repository,
-                passwordEncoder,
-                "",
-                "");
+        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder);
+        AdminInitializer initializer = new AdminInitializer(utilisateurService, "", "");
 
         initializer.run();
 
@@ -36,11 +33,8 @@ class AdminInitializerTest {
         UtilisateurRepository repository = org.mockito.Mockito.mock(UtilisateurRepository.class);
         PasswordEncoder passwordEncoder = org.mockito.Mockito.mock(PasswordEncoder.class);
         when(repository.existsByIdRole("ADMINISTRATEUR")).thenReturn(false);
-        AdminInitializer initializer = new AdminInitializer(
-                repository,
-                passwordEncoder,
-                "",
-                "");
+        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder);
+        AdminInitializer initializer = new AdminInitializer(utilisateurService, "", "");
 
         IllegalStateException exception = assertThrows(
                 IllegalStateException.class,
@@ -59,9 +53,9 @@ class AdminInitializerTest {
         when(repository.existsByIdRole("ADMINISTRATEUR")).thenReturn(false);
         when(repository.genererId()).thenReturn("UTI-00001");
         when(passwordEncoder.encode("mot-de-passe")).thenReturn("{bcrypt}hash");
+        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder);
         AdminInitializer initializer = new AdminInitializer(
-                repository,
-                passwordEncoder,
+                utilisateurService,
                 "admin@example.org",
                 "mot-de-passe");
 
