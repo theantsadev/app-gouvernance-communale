@@ -36,3 +36,7 @@ application-local.properties
 uploads/
 storage/
 *.log
+.env
+.env.*
+!.env.example
+*.local.bat

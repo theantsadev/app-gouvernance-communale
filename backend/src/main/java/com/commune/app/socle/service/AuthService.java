@@ -6,6 +6,7 @@ import com.commune.app.socle.dto.LoginResponse;
 import com.commune.app.socle.entity.Utilisateur;
 import com.commune.app.socle.lib.UtilisateurLib;
 import com.commune.app.socle.security.JwtService;
+import java.time.LocalDateTime;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,16 +18,19 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final HistoriqueConnexionService historiqueConnexionService;
     private final JwtService jwtService;
+    private final SessionAuthentificationService sessionService;
 
     public AuthService(
             UtilisateurService utilisateurService,
             PasswordEncoder passwordEncoder,
             HistoriqueConnexionService historiqueConnexionService,
-            JwtService jwtService) {
+            JwtService jwtService,
+            SessionAuthentificationService sessionService) {
         this.utilisateurService = utilisateurService;
         this.passwordEncoder = passwordEncoder;
         this.historiqueConnexionService = historiqueConnexionService;
         this.jwtService = jwtService;
+        this.sessionService = sessionService;
     }
 
     // Métier : contrôle la requête, l'utilisateur, le mot de passe et le compte actif.
@@ -57,6 +61,12 @@ public class AuthService {
 
             // Métier : crée le token et retourne les informations publiques.
             String token = jwtService.generer(utilisateur.getIdUtilisateur());
+            sessionService.creer(
+                    token,
+                    utilisateur.getIdUtilisateur(),
+                    LocalDateTime.ofInstant(
+                            jwtService.dateExpiration(token),
+                            java.time.ZoneId.systemDefault()));
             UtilisateurLib utilisateurLib = new UtilisateurLib(
                     utilisateur.getIdUtilisateur(),
                     utilisateur.getEmail(),
@@ -74,5 +84,13 @@ public class AuthService {
                     idUtilisateur);
             throw exception;
         }
+    }
+
+    // Métier : révoque la session et historise la déconnexion.
+    @Transactional
+    public void logout(String token, String idUtilisateur, String adresseIp) {
+        Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
+        sessionService.revoquer(token);
+        historiqueConnexionService.enregistrerDeconnexion(utilisateur, adresseIp);
     }
 }

@@ -115,7 +115,8 @@ class AuthServiceTest {
                 utilisateurService,
                 passwordEncoder,
                 historique,
-                new JwtService("development-secret-at-least-32-characters", 3600));
+                new JwtService("development-secret-at-least-32-characters", 3600),
+                new FakeSessionAuthentificationService());
     }
 
     private Utilisateur utilisateur(boolean actif) throws Exception {
@@ -144,7 +145,7 @@ class AuthServiceTest {
         private final Utilisateur utilisateur;
 
         FakeUtilisateurService(Utilisateur utilisateur) {
-            super((UtilisateurRepository) null);
+            super((UtilisateurRepository) null, null);
             this.utilisateur = utilisateur;
         }
 
@@ -166,6 +167,21 @@ class AuthServiceTest {
         @Override
         public boolean matches(CharSequence rawPassword, String encodedPassword) {
             return resultat;
+        }
+    }
+
+    private static class FakeSessionAuthentificationService
+            extends SessionAuthentificationService {
+
+        FakeSessionAuthentificationService() {
+            super(null);
+        }
+
+        @Override
+        public void creer(
+                String token,
+                String idUtilisateur,
+                java.time.LocalDateTime dateExpiration) {
         }
     }
 

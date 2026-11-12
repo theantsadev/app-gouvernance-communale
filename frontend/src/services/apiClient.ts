@@ -1,4 +1,5 @@
 import type { ApiError } from "../types/api";
+import { obtenirSession, supprimerSession } from "./sessionStorage";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -14,11 +15,21 @@ export async function apiFetch<T>(
         ...options,
         headers: {
             "Content-Type": "application/json",
+            ...(obtenirSession()?.token
+                ? { Authorization: `Bearer ${obtenirSession()?.token}` }
+                : {}),
             ...options.headers,
         },
     });
 
+    if (response.status === 401) {
+        supprimerSession();
+    }
+
     if (response.ok) {
+        if (response.status === 204) {
+            return undefined as T;
+        }
         return response.json() as Promise<T>;
     }
 

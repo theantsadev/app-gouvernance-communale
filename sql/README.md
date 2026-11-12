@@ -30,6 +30,19 @@ Puis exécuter le script connecté à cette base :
 psql -d gouvernance_communale -f gouvernance_communale.sql
 ```
 
+## Évolutions
+
+Les évolutions destinées aux bases déjà existantes sont dans `sql/evolutions/`.
+Elles sont exécutées après le schéma initial, dans l'ordre alphabétique de
+leur nom :
+
+```text
+psql -v ON_ERROR_STOP=1 -d gouvernance_communale -f sql/evolutions/2026-11-12_ajout-session-authentification.sql
+```
+
+La migration de `SESSION_AUTHENTIFICATION` est idempotente : elle ne recrée
+pas la table lorsque le schéma initial la contient déjà.
+
 Depuis une session `psql`, utiliser un chemin absolu entre guillemets :
 
 ```text
