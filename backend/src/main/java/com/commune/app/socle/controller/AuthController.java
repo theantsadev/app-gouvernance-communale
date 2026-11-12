@@ -2,6 +2,7 @@ package com.commune.app.socle.controller;
 
 import com.commune.app.socle.dto.LoginRequest;
 import com.commune.app.socle.dto.LoginResponse;
+import com.commune.app.socle.dto.SessionValidResponse;
 import com.commune.app.socle.entity.Utilisateur;
 import com.commune.app.socle.repository.UtilisateurRepository;
 import com.commune.app.socle.service.HistoriqueConnexionService;
@@ -55,6 +56,12 @@ public class AuthController {
                 utilisateur,
                 request.getRemoteAddr());
         return ResponseEntity.noContent().build();
+    }
+
+    // Intégration : confirme que le filtre a validé la session courante.
+    @PostMapping("/session/valid")
+    public ResponseEntity<SessionValidResponse> sessionValide() {
+        return ResponseEntity.ok(new SessionValidResponse(true));
     }
 
     private String extraireToken(jakarta.servlet.http.HttpServletRequest request) {

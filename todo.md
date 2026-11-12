@@ -30,7 +30,7 @@
 | SESSION003 | Développement | Authentification |  | Création du filtre JWT qui valide le token et la session avant de placer l'utilisateur connecté dans le SecurityContext | Métier | ETU003327 | 30 | 30 | 0 | 100,00% |
 | SESSION004 | Développement | Authentification |  | Modification de la fonction login(email,motDePasse) pour créer une session persistée et retourner son token | Métier | ETU003327 | 20 | 20 | 0 | 100,00% |
 | SESSION005 | Développement | Authentification |  | Création de l'api : /api/socle/auth/logout pour révoquer la session et enregistrer la déconnexion | Métier | ETU003327 | 20 | 20 | 0 | 100,00% |
-| SESSION006 | Développement | Authentification |  | Création de l'api : /api/socle/auth/session/valid pour vérifier si la session courante est valide | Métier | ETU003327 | 15 | 0 | 15 | 0,00% |
+| SESSION006 | Développement | Authentification |  | Création de l'api : /api/socle/auth/session/valid pour vérifier si la session courante est valide | Métier | ETU003327 | 15 | 15 | 0 | 100,00% |
 | SESSION007 | Développement | Authentification |  | Création de l'api : /api/socle/utilisateur/current pour retourner l'utilisateur connecté depuis le SecurityContext | Métier | ETU003327 | 15 | 0 | 15 | 0,00% |
 | SESSION008 | Développement | Authentification | Layout | Sécurisation du layout : vérifier la session au démarrage, rediriger vers /connexion si elle est absente ou invalide et ne jamais afficher de données utilisateur par défaut | Affichage | ETU003327 | 25 | 0 | 25 | 0,00% |
 | SESSION009 | Développement | Authentification |  | Ajout du client partagé pour envoyer le token Authorization Bearer et supprimer la session sur une réponse 401 | Intégration | ETU003327 | 15 | 0 | 15 | 0,00% |
