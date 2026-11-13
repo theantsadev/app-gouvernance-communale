@@ -1,7 +1,7 @@
-# Synchronisation Excel vers `todo.md`
+# Synchronisation Excel et `todo.md`
 
 Cet outil lit la feuille `liste des taches` de `Todo-stage-3327.xlsx` et
-reconstruit le tableau Markdown de `todo.md`.
+synchronise son tableau avec `todo.md`.
 
 ## Installation
 
@@ -16,6 +16,22 @@ composer install
 ```powershell
 php bin/sync.php
 ```
+
+Le sens peut être précisé en argument :
+
+```powershell
+# Excel vers todo.md (sens 1, valeur par défaut)
+php bin/sync.php 1
+
+# todo.md vers Excel
+php bin/sync.php -1
+```
+
+Si la feuille `liste des taches` n’existe pas dans le classeur, elle est
+créée automatiquement avec ses en-têtes.
+
+Le sens HTTP peut être choisi avec le paramètre `sens` (`GET` ou `POST`) :
+`http://localhost:8090/?sens=-1`.
 
 ## Synchronisation automatique
 

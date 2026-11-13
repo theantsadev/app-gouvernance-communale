@@ -1,6 +1,6 @@
 {
   "name": "gouvernance-communale/todo-sync",
-  "description": "Synchronise la feuille liste des taches vers todo.md",
+  "description": "Synchronise la feuille liste des taches avec todo.md",
   "type": "project",
   "require": {
     "php": "^8.2",
