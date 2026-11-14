@@ -4,8 +4,10 @@ import com.commune.app.socle.dto.LoginRequest;
 import com.commune.app.socle.dto.LoginResponse;
 import com.commune.app.socle.dto.SessionValidResponse;
 import com.commune.app.socle.service.AuthService;
+import com.commune.app.socle.security.CustomUserDetails;
 import com.commune.app.socle.security.JwtService;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,11 +38,11 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(
             jakarta.servlet.http.HttpServletRequest request,
-            Authentication authentication) {
+            @AuthenticationPrincipal CustomUserDetails customUserDetails) {
         String token = jwtService.extraireToken(request)
                 .orElseThrow(() -> new IllegalStateException(
                         "Le token de session est obligatoire."));
-        authService.logout(token, authentication.getName(), request.getRemoteAddr());
+        authService.logout(token, customUserDetails.getUtilisateur(), request.getRemoteAddr());
         return ResponseEntity.noContent().build();
     }
 

@@ -88,8 +88,7 @@ public class AuthService {
 
     // Métier : révoque la session et historise la déconnexion.
     @Transactional
-    public void logout(String token, String idUtilisateur, String adresseIp) {
-        Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
+    public void logout(String token, Utilisateur utilisateur, String adresseIp) {
         sessionService.revoquer(token);
         historiqueConnexionService.enregistrerDeconnexion(utilisateur, adresseIp);
     }
