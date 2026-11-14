@@ -13,9 +13,9 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
-    public Role findByNom(String nom) {
-        return roleRepository.findByNom(nom)
+    public Role findByIdRole(String idRole) {
+        return roleRepository.findById(idRole)
                 .orElseThrow(() -> new IllegalArgumentException(
-                        "Le rôle avec le nom '" + nom + "' n'existe pas."));
+                        "Le rôle avec l'ID '" + idRole + "' n'existe pas."));
     }
 }

@@ -58,7 +58,7 @@ public class UtilisateurService {
                     "ADMIN_EMAIL et ADMIN_PASSWORD sont obligatoires pour créer le premier administrateur.");
         }
 
-        Role roleAdministrateur = roleService.findByNom(idRoleAdministrateur);
+        Role roleAdministrateur = roleService.findByIdRole(idRoleAdministrateur);
 
         LocalDateTime maintenant = LocalDateTime.now();
         Utilisateur administrateur = new Utilisateur(
