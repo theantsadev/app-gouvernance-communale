@@ -1,8 +1,6 @@
 package com.commune.app.socle.security;
 
-import com.commune.app.socle.entity.Utilisateur;
 import com.commune.app.socle.service.SessionAuthentificationService;
-import com.commune.app.socle.service.UtilisateurService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,16 +18,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final SessionAuthentificationService sessionService;
-    private final UtilisateurService utilisateurService;
     private final CustomUserDetailsService customUserDetailsService;
 
     public JwtAuthenticationFilter(
             JwtService jwtService,
             SessionAuthentificationService sessionService,
-            UtilisateurService utilisateurService, CustomUserDetailsService customUserDetailsService) {
+         CustomUserDetailsService customUserDetailsService) {
         this.jwtService = jwtService;
         this.sessionService = sessionService;
-        this.utilisateurService = utilisateurService;
         this.customUserDetailsService = customUserDetailsService;
     }
 
@@ -61,8 +57,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (IllegalStateException exception) {
             return;
         }
-        
-        if(!userDetails.isEnabled()) {
+
+        if (!userDetails.isEnabled()) {
             return;
         }
 
