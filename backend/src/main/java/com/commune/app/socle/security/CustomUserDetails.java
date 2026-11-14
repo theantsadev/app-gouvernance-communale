@@ -21,6 +21,9 @@ public class CustomUserDetails implements UserDetails {
         return utilisateur.getRole()
                 .getPermissions()
                 .stream()
+                .filter(p -> p.getIdService() == null
+                        || utilisateur.getIdService() == null
+                        || p.getIdService().equals(utilisateur.getIdService()))
                 .map(permission -> new SimpleGrantedAuthority(permission.getIdPermission()))
                 .toList();
     }
