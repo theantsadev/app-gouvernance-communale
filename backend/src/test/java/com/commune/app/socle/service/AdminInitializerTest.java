@@ -18,8 +18,9 @@ class AdminInitializerTest {
     void neCreePasUnDeuxiemeAdministrateur() {
         UtilisateurRepository repository = org.mockito.Mockito.mock(UtilisateurRepository.class);
         PasswordEncoder passwordEncoder = org.mockito.Mockito.mock(PasswordEncoder.class);
-        when(repository.existsByIdRole("ADMINISTRATEUR")).thenReturn(true);
-        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder);
+        RoleService roleService = org.mockito.Mockito.mock(RoleService.class);
+        when(repository.existsByRole_IdRole("ADMINISTRATEUR")).thenReturn(true);
+        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder, roleService);
         AdminInitializer initializer = new AdminInitializer(utilisateurService, "", "");
 
         initializer.run();
@@ -32,8 +33,9 @@ class AdminInitializerTest {
     void refuseLaCreationSansVariablesDenvironnement() {
         UtilisateurRepository repository = org.mockito.Mockito.mock(UtilisateurRepository.class);
         PasswordEncoder passwordEncoder = org.mockito.Mockito.mock(PasswordEncoder.class);
-        when(repository.existsByIdRole("ADMINISTRATEUR")).thenReturn(false);
-        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder);
+        RoleService roleService = org.mockito.Mockito.mock(RoleService.class);
+        when(repository.existsByRole_IdRole("ADMINISTRATEUR")).thenReturn(false);
+        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder, roleService);
         AdminInitializer initializer = new AdminInitializer(utilisateurService, "", "");
 
         IllegalStateException exception = assertThrows(
@@ -50,10 +52,11 @@ class AdminInitializerTest {
     void creeLePremierAdministrateurAvecLeMotDePasseEncode() {
         UtilisateurRepository repository = org.mockito.Mockito.mock(UtilisateurRepository.class);
         PasswordEncoder passwordEncoder = org.mockito.Mockito.mock(PasswordEncoder.class);
-        when(repository.existsByIdRole("ADMINISTRATEUR")).thenReturn(false);
+        RoleService roleService = org.mockito.Mockito.mock(RoleService.class);
+        when(repository.existsByRole_IdRole("ADMINISTRATEUR")).thenReturn(false);
         when(repository.genererId()).thenReturn("UTI-00001");
         when(passwordEncoder.encode("mot-de-passe")).thenReturn("{bcrypt}hash");
-        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder);
+        UtilisateurService utilisateurService = new UtilisateurService(repository, passwordEncoder, roleService);
         AdminInitializer initializer = new AdminInitializer(
                 utilisateurService,
                 "admin@example.org",

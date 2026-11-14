@@ -12,7 +12,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, String
     @Query("select u from Utilisateur u where lower(u.email) = lower(:email)")
     Optional<Utilisateur> findByEmail(@Param("email") String email);
 
-    boolean existsByIdRole(String idRole);
+    boolean existsByRole_IdRole(String idRole);
 
     @Query(value = "select generer_id('UTI')", nativeQuery = true)
     String genererId();

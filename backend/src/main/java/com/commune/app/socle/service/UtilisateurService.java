@@ -1,6 +1,7 @@
 package com.commune.app.socle.service;
 
 import com.commune.app.commun.AuthException;
+import com.commune.app.socle.entity.Role;
 import com.commune.app.socle.entity.Utilisateur;
 import com.commune.app.socle.lib.UtilisateurLib;
 import com.commune.app.socle.repository.UtilisateurRepository;
@@ -14,12 +15,15 @@ public class UtilisateurService {
 
     private final UtilisateurRepository utilisateurRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RoleService roleService;
 
     public UtilisateurService(
             UtilisateurRepository utilisateurRepository,
-            PasswordEncoder passwordEncoder) {
+            PasswordEncoder passwordEncoder,
+            RoleService roleService) {
         this.utilisateurRepository = utilisateurRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleService = roleService;
     }
 
     // Métier : ne révèle pas si l'e-mail existe dans la base.
@@ -38,23 +42,23 @@ public class UtilisateurService {
     // Métier : retourne uniquement les informations publiques de l'utilisateur.
     public UtilisateurLib findPublicById(String idUtilisateur) {
         Utilisateur utilisateur = findById(idUtilisateur);
-        return new UtilisateurLib(
-                utilisateur.getIdUtilisateur(),
-                utilisateur.getEmail(),
-                utilisateur.getNom(),
-                utilisateur.getPrenom());
+        return UtilisateurLib.fromEntity(utilisateur);
     }
 
     // Métier : crée le premier administrateur uniquement si aucun n'existe.
     @Transactional
     public void initialiserAdministrateur(String email, String motDePasse) {
-        if (utilisateurRepository.existsByIdRole("ADMINISTRATEUR")) {
+        String idRoleAdministrateur = "ADMINISTRATEUR";
+
+        if (utilisateurRepository.existsByRole_IdRole(idRoleAdministrateur)) {
             return;
         }
         if (email.isBlank() || motDePasse.isBlank()) {
             throw new IllegalStateException(
                     "ADMIN_EMAIL et ADMIN_PASSWORD sont obligatoires pour créer le premier administrateur.");
         }
+
+        Role roleAdministrateur = roleService.findByNom(idRoleAdministrateur);
 
         LocalDateTime maintenant = LocalDateTime.now();
         Utilisateur administrateur = new Utilisateur(
@@ -66,7 +70,7 @@ public class UtilisateurService {
                 maintenant,
                 maintenant,
                 true,
-                "ADMINISTRATEUR");
+                roleAdministrateur);
         utilisateurRepository.save(administrateur);
     }
 }

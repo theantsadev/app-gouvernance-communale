@@ -2,7 +2,10 @@ package com.commune.app.socle.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -42,8 +45,9 @@ public class Utilisateur {
     @Column(name = "id_service", length = 20)
     private String idService;
 
-    @Column(name = "id_role", nullable = false, length = 20)
-    private String idRole;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
+    private Role role;
 
     protected Utilisateur() {
     }
@@ -57,7 +61,7 @@ public class Utilisateur {
             LocalDateTime dateCreation,
             LocalDateTime dateModification,
             boolean actif,
-            String idRole) {
+            Role role) {
         this.idUtilisateur = idUtilisateur;
         this.email = email;
         this.motDePasseHash = motDePasseHash;
@@ -66,7 +70,7 @@ public class Utilisateur {
         this.dateCreation = dateCreation;
         this.dateModification = dateModification;
         this.actif = actif;
-        this.idRole = idRole;
+        this.role = role;
     }
 
     public String getIdUtilisateur() {
@@ -109,7 +113,7 @@ public class Utilisateur {
         return idService;
     }
 
-    public String getIdRole() {
-        return idRole;
+    public Role getRole() {
+        return role;
     }
 }
