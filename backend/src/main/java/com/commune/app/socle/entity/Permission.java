@@ -3,12 +3,8 @@ package com.commune.app.socle.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "PERMISSION")
@@ -26,6 +22,17 @@ public class Permission {
 
     @Column(name = "description", length = 255)
     private String description;
+
+    @Column(name = "id_service", length = 20)
+    private String idService;
+
+    public String getIdService() {
+        return idService;
+    }
+
+    public void setIdService(String idService) {
+        this.idService = idService;
+    }
 
     public Permission() {
     }
@@ -62,5 +69,4 @@ public class Permission {
         this.description = description;
     }
 
- 
 }
