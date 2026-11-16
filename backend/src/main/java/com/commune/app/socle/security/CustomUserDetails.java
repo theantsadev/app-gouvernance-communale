@@ -18,13 +18,9 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return utilisateur.getRole()
-                .getPermissions()
+        return utilisateur.getPermissions()
                 .stream()
-                .filter(p -> p.getIdService() == null
-                        || utilisateur.getIdService() == null
-                        || p.getIdService().equals(utilisateur.getIdService()))
-                .map(permission -> new SimpleGrantedAuthority(permission.getIdPermission()))
+                .map(SimpleGrantedAuthority::new)
                 .toList();
     }
 

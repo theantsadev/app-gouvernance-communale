@@ -8,6 +8,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.springframework.transaction.annotation.Transactional;
 
 // Métier : représente exactement la table UTILISATEUR avec les noms camelCase.
 @Entity
@@ -48,6 +52,18 @@ public class Utilisateur {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
     private Role role;
+
+    public Set<String> getPermissions() {
+        return this.getRole()
+                .getPermissions()
+                .stream()
+                .filter(p -> p.getIdService() == null
+                        || this.getIdService() == null
+                        || p.getIdService().equals(this.getIdService()))
+                .map(permission -> permission.getIdPermission())
+                .collect(Collectors.toSet());
+
+    }
 
     protected Utilisateur() {
     }

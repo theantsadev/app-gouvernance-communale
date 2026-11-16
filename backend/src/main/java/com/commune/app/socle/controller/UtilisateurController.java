@@ -16,6 +16,7 @@ public class UtilisateurController {
     @GetMapping("/current")
     public ResponseEntity<UtilisateurLib> utilisateurConnecte(
             @AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        return ResponseEntity.ok(UtilisateurLib.fromEntity(customUserDetails.getUtilisateur()));
+        UtilisateurLib utilisateurLib = UtilisateurLib.fromEntity(customUserDetails.getUtilisateur());
+        return ResponseEntity.ok(utilisateurLib);
     }
 }

@@ -33,7 +33,8 @@ public class AuthService {
         this.sessionService = sessionService;
     }
 
-    // Métier : contrôle la requête, l'utilisateur, le mot de passe et le compte actif.
+    // Métier : contrôle la requête, l'utilisateur, le mot de passe et le compte
+    // actif.
     @Transactional
     public LoginResponse login(LoginRequest requete, String adresseIp) {
         // Métier : contrôle unitaire des champs.
@@ -67,11 +68,8 @@ public class AuthService {
                     LocalDateTime.ofInstant(
                             jwtService.dateExpiration(token),
                             java.time.ZoneId.systemDefault()));
-            UtilisateurLib utilisateurLib = new UtilisateurLib(
-                    utilisateur.getIdUtilisateur(),
-                    utilisateur.getEmail(),
-                    utilisateur.getNom(),
-                    utilisateur.getPrenom());
+            UtilisateurLib utilisateurLib = UtilisateurLib.fromEntity(utilisateur);
+            System.out.println("Utilisateur connecté : " + utilisateurLib);
             return new LoginResponse(token, jwtService.getDureeSecondes(), utilisateurLib);
         } catch (AuthException exception) {
             // Base : conserve l'échec dans une transaction séparée.
