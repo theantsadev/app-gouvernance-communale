@@ -44,9 +44,14 @@
 | RLPM003 | Développement | Socle commun |  | Création de la classe CustomUserDetails implements UserDetails | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
 | RLPM004 | Développement | Socle commun |  | Création de la classe  CustomUserDetailsService implements UserDetailsService | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
 | RLPM005 | Développement | Socle commun |  | Intégration de la classe UserDetails dans JwtAuthenticationFilter | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
-| RLPM006 | Développement | Socle commun | MatriceRolePermission | Ecran de la matrice rôles et permissions. | Affichage | ETU003327 | 20 | 0 | 20 | 0,00% |
-| RLPM007 | Développement | Socle commun |  | Remplacer les permissions d’un rôle, avec la protection de l’administrateur. | Métier | ETU003327 | 10 | 0 | 10 | 0,00% |
-| RLPM008 | Développement | Socle commun |  | Appel PUT /api/socle/roles/{id}/permissions et rafraîchissement du menu. | Intégration | ETU003327 | 10 | 0 | 10 | 0,00% |
+| RLPM006 | Développement | Socle commun | RoleList | Afficher la liste des rôles. | Affichage | ETU003327 | 5 | 5 | 0 | 100,00% |
+| RLPM009 | Développement | Socle commun | RoleList | Exposer GET /api/socle/roles et retourner les rôles depuis RoleService. | Métier | ETU003327 | 3 | 3 | 0 | 100,00% |
+| RLPM010 | Développement | Socle commun | RoleList | Appeler GET /api/socle/roles depuis le frontend pour alimenter la liste. | Intégration | ETU003327 | 3 | 3 | 0 | 100,00% |
+| RLPM011 | Développement | Socle commun | RolePermission | Afficher les permissions rattachées au rôle sélectionné. | Affichage | ETU003327 | 5 | 5 | 0 | 100,00% |
+| RLPM012 | Développement | Socle commun | RolePermission | Exposer GET /api/socle/roles/{idRole}/permissions et retourner les permissions du rôle depuis RoleService. | Métier | ETU003327 | 2 | 2 | 0 | 100,00% |
+| RLPM013 | Développement | Socle commun | RolePermission | Appeler GET /api/socle/roles/{idRole}/permissions depuis le frontend pour alimenter la liste des permissions. | Intégration | ETU003327 | 2 | 2 | 0 | 100,00% |
+| RLPM007 | Développement | Socle commun | RolePermission | Remplacer les permissions d’un rôle, avec la protection de l’administrateur. | Métier | ETU003327 | 10 | 0 | 10 | 0,00% |
+| RLPM008 | Développement | Socle commun | RolePermission | Appel PUT /api/socle/roles/{id}/permissions et rafraîchissement du menu. | Intégration | ETU003327 | 10 | 0 | 10 | 0,00% |
 | 10 | Développement | Socle commun |  | CRUD comptes utilisateurs (USR-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
 | 11 | Développement | Socle commun |  | Référentiels : FKT, types de signalement, statuts, services (SYS-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
 | 12 | Développement | Socle commun |  | Stockage et consultation des pièces jointes (SYS-003) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
