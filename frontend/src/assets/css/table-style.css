@@ -1,0 +1,15 @@
+/* Smartphone : la table défile horizontalement au lieu de déborder de la page */
+.table-conteneur { overflow-x: auto; }
+
+.table { width: 100%; border-collapse: collapse; }
+
+.table th,
+.table td {
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table th { font-weight: 600; white-space: nowrap; background: #f1f5f9; }
+.table tbody tr:hover { background: #f8fafc; }
+.table-vide { text-align: center; color: #64748b; }

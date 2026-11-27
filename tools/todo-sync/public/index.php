@@ -27,11 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST' && $_SERVER['REQUEST_METHOD'] !== 'GET
 }
 
 try {
-    $count = (new TodoSynchronizer($xlsxPath, $todoPath))->synchronize();
+    $sens = (int) ($_GET['sens'] ?? $_POST['sens'] ?? 1);
+    $count = (new TodoSynchronizer($xlsxPath, $todoPath))->synchronize($sens);
     echo json_encode([
         'message' => 'Synchronisation terminée.',
         'tasks' => $count,
+        'sens' => $sens,
         'todo' => $todoPath,
+        'xlsx' => $xlsxPath,
     ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 } catch (Throwable $exception) {
     http_response_code(500);

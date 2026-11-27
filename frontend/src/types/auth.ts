@@ -1,4 +1,4 @@
-export type UtilisateurLib = {
+export type UtilisateurResponse = {
     idUtilisateur: string;
     email: string;
     nom: string;
@@ -8,10 +8,10 @@ export type UtilisateurLib = {
 export type LoginResponse = {
     token: string;
     expiresIn: number;
-    utilisateur: UtilisateurLib;
+    utilisateur: UtilisateurResponse;
 };
 
-export type ChampsConnexion = {
+export type LoginRequest = {
     email: string;
     motDePasse: string;
 };

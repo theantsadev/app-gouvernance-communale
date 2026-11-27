@@ -4,11 +4,11 @@ import { useNavigate } from "react-router";
 import "../../assets/css/login-style.css";
 import { login } from "../../services/authApi";
 import type { ApiError } from "../../types/api";
-import type { ChampsConnexion } from "../../types/auth";
+import type { LoginRequest } from "../../types/auth";
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const [champs, setChamps] = useState<ChampsConnexion>({
+    const [champs, setChamps] = useState<LoginRequest>({
         email: "",
         motDePasse: "",
     });
@@ -16,7 +16,7 @@ const LoginPage = () => {
     const [envoiEnCours, setEnvoiEnCours] = useState(false);
 
     // Affichage : conserve les valeurs saisies par l'utilisateur.
-    const modifierChamp = (champ: keyof ChampsConnexion, valeur: string) => {
+    const modifierChamp = (champ: keyof LoginRequest, valeur: string) => {
         setChamps((valeurs) => ({ ...valeurs, [champ]: valeur }));
         setErreur(null);
     };
@@ -75,7 +75,6 @@ const LoginPage = () => {
                             name="motDePasse"
                             type="password"
                             autoComplete="current-password"
-                            required
                             value={champs.motDePasse}
                             onChange={(event) => modifierChamp("motDePasse", event.target.value)}
                             aria-invalid={erreur?.champ === "motDePasse"}

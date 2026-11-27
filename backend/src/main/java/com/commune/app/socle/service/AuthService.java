@@ -3,8 +3,8 @@ package com.commune.app.socle.service;
 import com.commune.app.commun.AuthException;
 import com.commune.app.socle.dto.LoginRequest;
 import com.commune.app.socle.dto.LoginResponse;
+import com.commune.app.socle.dto.UtilisateurResponse;
 import com.commune.app.socle.entity.Utilisateur;
-import com.commune.app.socle.lib.UtilisateurLib;
 import com.commune.app.socle.security.JwtService;
 import java.time.LocalDateTime;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +33,8 @@ public class AuthService {
         this.sessionService = sessionService;
     }
 
-    // Métier : contrôle la requête, l'utilisateur, le mot de passe et le compte actif.
+    // Métier : contrôle la requête, l'utilisateur, le mot de passe et le compte
+    // actif.
     @Transactional
     public LoginResponse login(LoginRequest requete, String adresseIp) {
         // Métier : contrôle unitaire des champs.
@@ -42,9 +43,9 @@ public class AuthService {
         Utilisateur utilisateur = null;
         try {
             // Métier : contrôle complexe de l'utilisateur et du mot de passe.
-            utilisateur = utilisateurService.findByEmail(requete.getEmail());
+            utilisateur = utilisateurService.findByEmail(requete.email());
             if (!passwordEncoder.matches(
-                    requete.getMotDePasse(),
+                    requete.motDePasse(),
                     utilisateur.getMotDePasseHash())) {
                 throw AuthException.identifiantsInvalides();
             }
@@ -67,11 +68,8 @@ public class AuthService {
                     LocalDateTime.ofInstant(
                             jwtService.dateExpiration(token),
                             java.time.ZoneId.systemDefault()));
-            UtilisateurLib utilisateurLib = new UtilisateurLib(
-                    utilisateur.getIdUtilisateur(),
-                    utilisateur.getEmail(),
-                    utilisateur.getNom(),
-                    utilisateur.getPrenom());
+            UtilisateurResponse utilisateurLib = UtilisateurResponse.fromEntity(utilisateur);
+            System.out.println("Utilisateur connecté : " + utilisateurLib);
             return new LoginResponse(token, jwtService.getDureeSecondes(), utilisateurLib);
         } catch (AuthException exception) {
             // Base : conserve l'échec dans une transaction séparée.
@@ -79,7 +77,7 @@ public class AuthService {
                     ? null
                     : utilisateur.getIdUtilisateur();
             historiqueConnexionService.enregistrerEchec(
-                    requete.getEmail(),
+                    requete.email(),
                     adresseIp,
                     idUtilisateur);
             throw exception;
@@ -88,8 +86,7 @@ public class AuthService {
 
     // Métier : révoque la session et historise la déconnexion.
     @Transactional
-    public void logout(String token, String idUtilisateur, String adresseIp) {
-        Utilisateur utilisateur = utilisateurService.findById(idUtilisateur);
+    public void logout(String token, Utilisateur utilisateur, String adresseIp) {
         sessionService.revoquer(token);
         historiqueConnexionService.enregistrerDeconnexion(utilisateur, adresseIp);
     }

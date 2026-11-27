@@ -1,7 +1,7 @@
 import { apiFetch } from "./apiClient";
 import type { LoginResponse } from "../types/auth";
 import { supprimerSession } from "./sessionStorage";
-import type { UtilisateurLib } from "../types/auth";
+import type { UtilisateurResponse } from "../types/auth";
 
 export type SessionValidResponse = {
     valide: boolean;
@@ -35,6 +35,6 @@ export async function sessionValide(): Promise<SessionValidResponse> {
 }
 
 // Intégration : récupère l'utilisateur associé à la session courante.
-export async function utilisateurConnecte(): Promise<UtilisateurLib> {
-    return apiFetch<UtilisateurLib>("/api/socle/utilisateur/current");
+export async function utilisateurConnecte(): Promise<UtilisateurResponse> {
+    return apiFetch<UtilisateurResponse>("/api/socle/utilisateur/current");
 }

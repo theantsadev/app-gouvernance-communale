@@ -38,7 +38,20 @@
 | SESSION011 | Développement | Authentification |  | Création de la fonction sessionValide() sous src/services/authApi.ts qui appelle /api/socle/auth/session/valid | Intégration | ETU003327 | 10 | 10 | 0 | 100,00% |
 | SESSION012 | Développement | Authentification |  | Création de la fonction utilisateurConnecte() sous src/services/authApi.ts qui appelle /api/socle/utilisateur/current | Intégration | ETU003327 | 10 | 10 | 0 | 100,00% |
 | SESSION013 | Tests | Authentification |  | Création des tests de session : token absent, token expiré, session révoquée, déconnexion et utilisateur connecté | Tests | ETU003327 | 30 | 30 | 0 | 100,00% |
-| 9 | Développement | Socle commun |  | Gestion des rôles et permissions : maire, SG, chefs de service, agents, administrateur (USR-002) |  | ETU003327 | 1200 | 0 | 1200 | 0,00% |
+| RLPM | Développement | Socle commun |  | Gestion des rôles et permissions : maire, SG, chefs de service, agents, administrateur (USR-002) |  | ETU003327 | 1200 | 0 | 1200 | 0,00% |
+| RLPM001 | Développement | Socle commun |  | Création des classes Role et Permission avec exactement les attributs dans la base en version camelCase | Métier | ETU003327 | 10 | 10 | 0 | 100,00% |
+| RLPM002 | Développement | Socle commun |  | Liste permission rattaché à un role (fetch lazy) | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
+| RLPM003 | Développement | Socle commun |  | Création de la classe CustomUserDetails implements UserDetails | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
+| RLPM004 | Développement | Socle commun |  | Création de la classe  CustomUserDetailsService implements UserDetailsService | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
+| RLPM005 | Développement | Socle commun |  | Intégration de la classe UserDetails dans JwtAuthenticationFilter | Métier | ETU003327 | 5 | 5 | 0 | 100,00% |
+| RLPM006 | Développement | Socle commun | RoleList | Afficher la liste des rôles. | Affichage | ETU003327 | 5 | 5 | 0 | 100,00% |
+| RLPM009 | Développement | Socle commun | RoleList | Exposer GET /api/socle/roles et retourner les rôles depuis RoleService. | Métier | ETU003327 | 3 | 3 | 0 | 100,00% |
+| RLPM010 | Développement | Socle commun | RoleList | Appeler GET /api/socle/roles depuis le frontend pour alimenter la liste. | Intégration | ETU003327 | 3 | 3 | 0 | 100,00% |
+| RLPM011 | Développement | Socle commun | RolePermission | Afficher les permissions rattachées au rôle sélectionné. | Affichage | ETU003327 | 5 | 5 | 0 | 100,00% |
+| RLPM012 | Développement | Socle commun | RolePermission | Exposer GET /api/socle/roles/{idRole}/permissions et retourner les permissions du rôle depuis RoleService. | Métier | ETU003327 | 2 | 2 | 0 | 100,00% |
+| RLPM013 | Développement | Socle commun | RolePermission | Appeler GET /api/socle/roles/{idRole}/permissions depuis le frontend pour alimenter la liste des permissions. | Intégration | ETU003327 | 2 | 2 | 0 | 100,00% |
+| RLPM007 | Développement | Socle commun | RolePermission | Remplacer les permissions d’un rôle, avec la protection de l’administrateur. | Métier | ETU003327 | 10 | 0 | 10 | 0,00% |
+| RLPM008 | Développement | Socle commun | RolePermission | Appel PUT /api/socle/roles/{id}/permissions et rafraîchissement du menu. | Intégration | ETU003327 | 10 | 0 | 10 | 0,00% |
 | 10 | Développement | Socle commun |  | CRUD comptes utilisateurs (USR-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
 | 11 | Développement | Socle commun |  | Référentiels : FKT, types de signalement, statuts, services (SYS-001) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
 | 12 | Développement | Socle commun |  | Stockage et consultation des pièces jointes (SYS-003) |  | ETU003327 | 480 | 0 | 480 | 0,00% |
