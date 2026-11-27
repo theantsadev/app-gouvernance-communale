@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router'
 import Layout from './components/layout/Layout'
 import Content1 from './pages/Content1'
-import Content2 from './pages/Content2'
 import Error from './pages/Error'
 import LoginPage from './modules/auth/LoginPage'
+import RoleList from './modules/RoleList'
+import RolePermission from './modules/RolePermission'
 
 export default function App() {
   return (
@@ -14,7 +15,8 @@ export default function App() {
       <Route element={<Layout />}>
         {/* index pour indiquer une route par défaut */}
         <Route index element={<Content1 />} />
-        <Route path="content-2" element={<Content2 />} />
+        <Route path="roles" element={<RoleList />} />
+        <Route path="roles/:idRole/permissions" element={<RolePermission />} />
       </Route>
 
       {/* "*" pour indiquer une route inconnue */}

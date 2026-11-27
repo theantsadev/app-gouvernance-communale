@@ -6,10 +6,11 @@ export type ElementMenu = {
 
 export const menuPrincipal: ElementMenu[] = [
     { libelle: "Voir le contenu 1", chemin: "/" },
+    { libelle: "Liste des rôles", chemin: "/roles" },
     {
         libelle: "Contenus",
         enfants: [
-            { libelle: "Voir le contenu 2", chemin: "/content-2" },
+
             // exemple de 3e niveau : à retirer tant que la route n'existe pas
             { libelle: "Autres", enfants: [{ libelle: "Contenu 3", chemin: "/content-3" }] },
         ],
