@@ -1,6 +1,6 @@
 package com.commune.app.socle.controller;
 
-import com.commune.app.socle.lib.UtilisateurLib;
+import com.commune.app.socle.dto.UtilisateurResponse;
 import com.commune.app.socle.security.CustomUserDetails;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,9 +14,9 @@ public class UtilisateurController {
 
     // Intégration : retourne l'utilisateur provenant du SecurityContext.
     @GetMapping("/current")
-    public ResponseEntity<UtilisateurLib> utilisateurConnecte(
+    public ResponseEntity<UtilisateurResponse> utilisateurConnecte(
             @AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        UtilisateurLib utilisateurLib = UtilisateurLib.fromEntity(customUserDetails.getUtilisateur());
+        UtilisateurResponse utilisateurLib = UtilisateurResponse.fromEntity(customUserDetails.getUtilisateur());
         return ResponseEntity.ok(utilisateurLib);
     }
 }

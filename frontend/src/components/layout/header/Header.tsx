@@ -2,10 +2,10 @@ import logoCommune from "../../../assets/img/hero.png";
 import "../../../assets/css/header-style.css";
 import Bulle from "./Bulle";
 import Hamburger from "./Hamburger";
-import type { UtilisateurLib } from "../../../types/auth";
+import type { UtilisateurResponse } from "../../../types/auth";
 
 type HeaderProps = {
-    utilisateur: UtilisateurLib;
+    utilisateur: UtilisateurResponse;
     deconnecter: () => void;
     menuOuvert: boolean;
     basculerMenu: () => void;

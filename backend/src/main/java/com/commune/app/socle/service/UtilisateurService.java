@@ -1,9 +1,9 @@
 package com.commune.app.socle.service;
 
 import com.commune.app.commun.AuthException;
+import com.commune.app.socle.dto.UtilisateurResponse;
 import com.commune.app.socle.entity.Role;
 import com.commune.app.socle.entity.Utilisateur;
-import com.commune.app.socle.lib.UtilisateurLib;
 import com.commune.app.socle.repository.UtilisateurRepository;
 import java.time.LocalDateTime;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,9 +40,9 @@ public class UtilisateurService {
     }
 
     // Métier : retourne uniquement les informations publiques de l'utilisateur.
-    public UtilisateurLib findPublicById(String idUtilisateur) {
+    public UtilisateurResponse findPublicById(String idUtilisateur) {
         Utilisateur utilisateur = findById(idUtilisateur);
-        return UtilisateurLib.fromEntity(utilisateur);
+        return UtilisateurResponse.fromEntity(utilisateur);
     }
 
     // Métier : crée le premier administrateur uniquement si aucun n'existe.

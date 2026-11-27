@@ -1,11 +1,11 @@
-package com.commune.app.socle.lib;
+package com.commune.app.socle.dto;
 
 import java.util.Set;
 
 import com.commune.app.socle.entity.Utilisateur;
 
 // Métier : transporte uniquement les informations publiques de l'utilisateur connecté.
-public record UtilisateurLib(
+public record UtilisateurResponse(
                 String idUtilisateur,
                 String email,
                 String nom,
@@ -17,8 +17,8 @@ public record UtilisateurLib(
                                 + ", permissions=" + permissions + "]";
         }
 
-        public static UtilisateurLib fromEntity(Utilisateur utilisateur) {
-                return new UtilisateurLib(
+        public static UtilisateurResponse fromEntity(Utilisateur utilisateur) {
+                return new UtilisateurResponse(
                                 utilisateur.getIdUtilisateur(),
                                 utilisateur.getEmail(),
                                 utilisateur.getNom(),

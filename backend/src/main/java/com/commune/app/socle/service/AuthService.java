@@ -3,8 +3,8 @@ package com.commune.app.socle.service;
 import com.commune.app.commun.AuthException;
 import com.commune.app.socle.dto.LoginRequest;
 import com.commune.app.socle.dto.LoginResponse;
+import com.commune.app.socle.dto.UtilisateurResponse;
 import com.commune.app.socle.entity.Utilisateur;
-import com.commune.app.socle.lib.UtilisateurLib;
 import com.commune.app.socle.security.JwtService;
 import java.time.LocalDateTime;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -43,9 +43,9 @@ public class AuthService {
         Utilisateur utilisateur = null;
         try {
             // Métier : contrôle complexe de l'utilisateur et du mot de passe.
-            utilisateur = utilisateurService.findByEmail(requete.getEmail());
+            utilisateur = utilisateurService.findByEmail(requete.email());
             if (!passwordEncoder.matches(
-                    requete.getMotDePasse(),
+                    requete.motDePasse(),
                     utilisateur.getMotDePasseHash())) {
                 throw AuthException.identifiantsInvalides();
             }
@@ -68,7 +68,7 @@ public class AuthService {
                     LocalDateTime.ofInstant(
                             jwtService.dateExpiration(token),
                             java.time.ZoneId.systemDefault()));
-            UtilisateurLib utilisateurLib = UtilisateurLib.fromEntity(utilisateur);
+            UtilisateurResponse utilisateurLib = UtilisateurResponse.fromEntity(utilisateur);
             System.out.println("Utilisateur connecté : " + utilisateurLib);
             return new LoginResponse(token, jwtService.getDureeSecondes(), utilisateurLib);
         } catch (AuthException exception) {
@@ -77,7 +77,7 @@ public class AuthService {
                     ? null
                     : utilisateur.getIdUtilisateur();
             historiqueConnexionService.enregistrerEchec(
-                    requete.getEmail(),
+                    requete.email(),
                     adresseIp,
                     idUtilisateur);
             throw exception;

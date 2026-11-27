@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.springframework.transaction.annotation.Transactional;
+
 
 // Métier : représente exactement la table UTILISATEUR avec les noms camelCase.
 @Entity

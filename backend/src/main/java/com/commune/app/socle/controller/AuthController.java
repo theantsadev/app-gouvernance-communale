@@ -6,7 +6,6 @@ import com.commune.app.socle.dto.SessionValidResponse;
 import com.commune.app.socle.service.AuthService;
 import com.commune.app.socle.security.CustomUserDetails;
 import com.commune.app.socle.security.JwtService;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

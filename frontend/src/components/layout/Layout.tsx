@@ -7,12 +7,12 @@ import PageContent from "./PageContent";
 import Sidebar from "./sidebar/Sidebar";
 import { logout, sessionValide, utilisateurConnecte } from "../../services/authApi";
 import { obtenirSession } from "../../services/sessionStorage";
-import type { UtilisateurLib } from "../../types/auth";
+import type { UtilisateurResponse } from "../../types/auth";
 
 const Layout = () => {
     const navigate = useNavigate();
     const [menuOuvert, setMenuOuvert] = useState(false);
-    const [utilisateur, setUtilisateur] = useState<UtilisateurLib | null>(null);
+    const [utilisateur, setUtilisateur] = useState<UtilisateurResponse | null>(null);
     const [verificationEnCours, setVerificationEnCours] = useState(true);
     const basculerMenu = () => setMenuOuvert((valeur) => !valeur);
     const fermerMenu = () => setMenuOuvert(false);
