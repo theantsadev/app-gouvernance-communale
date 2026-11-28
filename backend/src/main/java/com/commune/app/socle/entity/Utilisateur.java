@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
-
 // Métier : représente exactement la table UTILISATEUR avec les noms camelCase.
 @Entity
 @Table(name = "UTILISATEUR")

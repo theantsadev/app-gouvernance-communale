@@ -2,9 +2,9 @@ import { Route, Routes } from 'react-router'
 import Layout from './components/layout/Layout'
 import Content1 from './pages/Content1'
 import Error from './pages/Error'
-import LoginPage from './modules/auth/LoginPage'
-import RoleList from './modules/RoleList'
-import RolePermission from './modules/RolePermission'
+import LoginPage from './modules/socle/auth/LoginPage'
+import RoleList from './modules/socle/RoleList'
+import RolePermission from './modules/socle/RolePermission'
 
 export default function App() {
   return (
