@@ -1,6 +1,6 @@
 
 import { Link } from "react-router";
-import Table from "../../components/layout/Table";
+import Table from "../../components/table/Table";
 import type { Colonne } from "../../types/colonne";
 import type { RoleResponse } from "../../types/role";
 import { useEffect, useState } from "react";

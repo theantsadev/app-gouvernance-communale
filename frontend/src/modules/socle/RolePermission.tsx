@@ -1,5 +1,5 @@
 
-import Table from "../../components/layout/Table";
+import Table from "../../components/table/Table";
 import type { Colonne } from "../../types/colonne";
 import { useEffect, useState } from "react";
 import type { PermissionResponse } from "../../types/permission";
