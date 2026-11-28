@@ -1,10 +1,10 @@
 
 import { Link } from "react-router";
-import Table from "../components/layout/Table";
-import type { Colonne } from "../types/colonne";
-import type { RoleResponse } from "../types/role";
+import Table from "../../components/layout/Table";
+import type { Colonne } from "../../types/colonne";
+import type { RoleResponse } from "../../types/role";
 import { useEffect, useState } from "react";
-import { getAllRoles } from "../services/roleApi";
+import { getAllRoles } from "../../services/roleApi";
 
 const colonnes: Colonne<RoleResponse>[] = [
     { cle: "nom", titre: "Rôle", afficher: (role) => <Link to={`/roles/${role.idRole}/permissions`}>{role.nom}</Link> },

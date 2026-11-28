@@ -1,9 +1,9 @@
 
-import Table from "../components/layout/Table";
-import type { Colonne } from "../types/colonne";
+import Table from "../../components/layout/Table";
+import type { Colonne } from "../../types/colonne";
 import { useEffect, useState } from "react";
-import type { PermissionResponse } from "../types/permission";
-import { getPermissionsByRoleId } from "../services/roleApi";
+import type { PermissionResponse } from "../../types/permission";
+import { getPermissionsByRoleId } from "../../services/roleApi";
 import { useParams } from "react-router";
 
 const colonnes: Colonne<PermissionResponse>[] = [

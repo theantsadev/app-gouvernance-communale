@@ -2,9 +2,9 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { useNavigate } from "react-router";
 import "../../assets/css/login-style.css";
-import { login } from "../../services/authApi";
-import type { ApiError } from "../../types/api";
-import type { LoginRequest } from "../../types/auth";
+import { login } from "../../../services/authApi";
+import type { ApiError } from "../../../types/api";
+import type { LoginRequest } from "../../../types/auth";
 
 const LoginPage = () => {
     const navigate = useNavigate();
