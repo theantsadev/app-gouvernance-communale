@@ -13,6 +13,7 @@ La saisie directe par les citoyens est hors périmètre de la version 1.
 - [`sql/`](./sql/) : schéma PostgreSQL/PostGIS et données initiales par module.
 - [`todo.md`](./todo.md) : suivi détaillé, une ligne correspondant à une petite tâche.
 - [`tools/todo-sync/`](./tools/todo-sync/) : synchronisation de la feuille Excel `liste des taches` vers `todo.md`.
+- [`tools/maquette-upload/`](./tools/maquette-upload/) : site mobile pour envoyer des images dans `maquettes/`.
 - [`docs/manuel-utilisateur.md`](./docs/manuel-utilisateur.md) : guide utilisateur.
 - [`maquettes/`](./maquettes/) : maquettes fonctionnelles.
 
